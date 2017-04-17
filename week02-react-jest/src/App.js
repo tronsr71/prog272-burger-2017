@@ -11,7 +11,7 @@ class App extends Component {
 
   }
 
-  bar = () => {
+  getNine = () => {
     //alert("bar was called");
     this.setState({ nine: '9' });
   }
@@ -27,7 +27,7 @@ class App extends Component {
           Nine: {this.state.nine}
         </p>
 
-          <button className="elf" onClick = {this.bar}>Get Nine</button>
+          <button className="elf" onClick = {this.getNine}>Get Nine</button>
       </div>
     );
   }

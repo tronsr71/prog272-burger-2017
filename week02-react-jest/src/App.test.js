@@ -20,7 +20,7 @@ describe('React Jest Suite', function() {
 
     it('renders button click message', () => {
         const wrapper = shallow(<App />);
-        const nineSign = <p>Nine: 9</p>;
+        const nineSign = <p className="App-intro">Nine: 9</p>;
         wrapper.find('button.elf').simulate('click');
         expect(wrapper.contains(nineSign)).toEqual(true);
     });
