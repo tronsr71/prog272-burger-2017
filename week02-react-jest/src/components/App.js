@@ -3,7 +3,7 @@ import '../App.css';
 
 class App extends Component {
   constructor() {
-    super(); // generic call for constructor
+    super(); // generic call for parent constructor
     this.state = {
         nine: '0'
     }

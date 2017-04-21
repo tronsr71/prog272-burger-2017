@@ -1,38 +1,45 @@
 import React, { Component } from 'react';
 import '../App.css';
 
+
 class Address extends Component {
   constructor(props) {
     super(props); // generic call for parent constructor
-    console.log('TEST PROPS', props);
+    //console.log('TEST PROPS', props);
+    console.log('constructor is being called');
 
     if (!this.props.address) {
       throw "No props in Address. You must pass in props";
     }
 
-    const defaultAddress=0;
+    const defaultAddress = this.props.address[0];
     this.state = {
-      firstName: this.props.address[defaultAddress].firstName,
-      lastName: this.props.address[defaultAddress].lastName,
-      street: this.props.address[defaultAddress].street,
-      city: this.props.address[defaultAddress].city,
-      state: this.props.address[defaultAddress].state,
-      zip: this.props.address[defaultAddress].zip,
+      firstName: defaultAddress.firstName,
+      lastName: defaultAddress.lastName,
+      street: defaultAddress.street,
+      city: defaultAddress.city,
+      state: defaultAddress.state,
+      zip: defaultAddress.zip,
+      phone: defaultAddress.phone,
+      website: defaultAddress.website
     }
 
   }
 
   setAddress = () => {
-    const firstAddress=1;
+    const firstAddress = this.props.address[1];
     this.setState({
-      firstName: this.props.address[firstAddress].firstName,
-      lastName: this.props.address[firstAddress].lastName,
-      street: this.props.address[firstAddress].street,
-      city: this.props.address[firstAddress].city,
-      state: this.props.address[firstAddress].state,
-      zip: this.props.address[firstAddress].zip,
+      firstName: firstAddress.firstName,
+      lastName: firstAddress.lastName,
+      street: firstAddress.street,
+      city: firstAddress.city,
+      state: firstAddress.state,
+      zip: firstAddress.zip,
+      phone: firstAddress.phone,
+      website: firstAddress.website
     })
   };
+
 
   render() {
     return (
@@ -43,8 +50,11 @@ class Address extends Component {
         <p className="App-intro">city: {this.state.city}</p>
         <p className="App-intro">state: {this.state.state}</p>
         <p className="App-intro">zip: {this.state.zip}</p>
+        <p className="App-intro">phone: {this.state.phone}</p>
+        <p className="App-intro">website: {this.state.website}</p>
 
         <button id="getAddressBtn" onClick={this.setAddress}>Get Address</button>
+
       </div>
     );
   }

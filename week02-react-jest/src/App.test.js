@@ -22,8 +22,8 @@ describe('App Test Suite', function() {
   it('renders and displays the word Nine', () => {
     const wrapper = shallow(<App />);
     //console.log(wrapper);
-    const welcome = <p className="App-intro">Nine: 0</p>;
-    expect(wrapper.contains(welcome)).toEqual(true);
+    const nineSign = <p className="App-intro">Nine: 0</p>;
+    expect(wrapper.contains(nineSign)).toEqual(true);
   });
 
   it('renders button click message', () => {
