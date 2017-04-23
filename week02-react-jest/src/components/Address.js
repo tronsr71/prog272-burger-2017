@@ -8,8 +8,10 @@ class Address extends Component {
     //console.log('TEST PROPS', props);
     console.log('constructor is being called');
 
+
     if (!this.props.address) {
-      throw "No props in Address. You must pass in props";
+      //throw "No props in Address. You must pass in props";
+      throw new Error("No props in Address. You must pass in props.");
     }
 
     const defaultAddress = this.props.address[0];
