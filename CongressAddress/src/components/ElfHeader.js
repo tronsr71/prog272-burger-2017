@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-//import logo from '../logo.svg';
-import logo from '../BK_Logo.svg';
-import '../App.css';
+import logo from '../images/BK_Logo.svg';
+import '../css/App.css';
 
 class ElfHeader extends Component {
 

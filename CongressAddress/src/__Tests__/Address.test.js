@@ -1,7 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Address from "./components/Address";
-import addresses from './AddressList';
+
+import Address from "../components/Address";
+import addresses from '../components/AddressList';
 
 
 

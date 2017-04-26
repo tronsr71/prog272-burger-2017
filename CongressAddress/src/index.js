@@ -5,8 +5,8 @@ import ElfHeader from './components/ElfHeader';
 import App from './components/App';
 import Address from './components/Address';
 
-import addresses from './AddressList';
-import './index.css';
+import addresses from './components/AddressList';
+import './css/index.css';
 
 
 ReactDOM.render(
