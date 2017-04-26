@@ -54,10 +54,23 @@ describe('Address Default Value Test Suite', function() {
     expect(wrapper.contains(display)).toEqual(true);
   });
 
-//});
+  it('renders and displays the default value for phone', () => {
+    const wrapper = shallow(<Address address={addresses}/>);
+    const display = <p className="App-intro">phone: unknown</p>;
+    expect(wrapper.contains(display)).toEqual(true);
+  });
 
+  it('renders and displays the default value for website', () => {
+    const wrapper = shallow(<Address address={addresses}/>);
+    const display = <p className="App-intro">website: unknown</p>;
+    expect(wrapper.contains(display)).toEqual(true);
+  });
 
-//describe('Address First Address (index=1) Value Test Suite', function() {
+// });
+//
+//
+//
+// describe('Address First Address (index=1) Value Test Suite', function() {
 
   it('renders the first (index=1) AddressList value for firstName', () => {
     const wrapper = shallow(<Address address={addresses}/>);
@@ -97,6 +110,20 @@ describe('Address Default Value Test Suite', function() {
   it('renders the first (index=1) AddressList value for zip', () => {
     const wrapper = shallow(<Address address={addresses}/>);
     const display = <p className="App-intro">zip: 98174</p>;
+    wrapper.find('button#getAddressBtn').simulate('click');
+    expect(wrapper.contains(display)).toEqual(true);
+  });
+
+  it('renders the first (index=1) AddressList value for phone', () => {
+    const wrapper = shallow(<Address address={addresses}/>);
+    const display = <p className="App-intro">phone: (206) 553-5545</p>;
+    wrapper.find('button#getAddressBtn').simulate('click');
+    expect(wrapper.contains(display)).toEqual(true);
+  });
+
+  it('renders the first (index=1) AddressList value for website', () => {
+    const wrapper = shallow(<Address address={addresses}/>);
+    const display = <p className="App-intro">website: www.murray.senate.gov</p>;
     wrapper.find('button#getAddressBtn').simulate('click');
     expect(wrapper.contains(display)).toEqual(true);
   });

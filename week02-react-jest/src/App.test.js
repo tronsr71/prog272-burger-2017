@@ -9,14 +9,14 @@ import ElfHeader from "./components/ElfHeader";
 describe('App Test Suite', function() {
 
   it('renders our App component without crashing', () => {
-      const div = document.createElement('div');
-      ReactDOM.render(<App />, div);
+    const div = document.createElement('div');
+    ReactDOM.render(<App />, div);
   });
 
   it('renders and reads H1 text', () => {
-      const wrapper = shallow(<ElfHeader />);
-      const welcome = <h1>Welcome to the Jungle</h1>;
-      expect(wrapper.contains(welcome)).toEqual(true);
+    const wrapper = shallow(<ElfHeader />);
+    const welcome = <h1>Welcome to the Jungle</h1>;
+    expect(wrapper.contains(welcome)).toEqual(true);
   });
 
   it('renders and displays the word Nine', () => {
@@ -27,10 +27,10 @@ describe('App Test Suite', function() {
   });
 
   it('renders button click message', () => {
-      const wrapper = shallow(<App />);
-      const nineSign = <p className="App-intro">Nine: 9</p>;
-      wrapper.find('button#appBtn').simulate('click');
-      expect(wrapper.contains(nineSign)).toEqual(true);
+    const wrapper = shallow(<App />);
+    const nineSign = <p className="App-intro">Nine: 9</p>;
+    wrapper.find('button#appBtn').simulate('click');
+    expect(wrapper.contains(nineSign)).toEqual(true);
   });
 
 
