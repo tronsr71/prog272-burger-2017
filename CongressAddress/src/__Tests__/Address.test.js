@@ -1,11 +1,123 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
 import Address from "../components/Address";
 import addresses from '../components/AddressList';
+import '../css/index.css';
+
+
+const address = addresses[0];
+
+describe('Address mount Suite', function () {
+
+  var quiet = true;
+
+  /*
+   * @param {object} wrapper - Container for a bunch of HTML nodes
+   * @param {number} index - Index of HTML element.
+   * @param {boolean} talkToMe - Speak even if quiet is true
+   */
+  const getIndex = function(wrapper, index, talkToMe) {
+    if (!quiet || talkToMe) {
+      const ninep = wrapper.find('div#addressRender').childAt(index).debug();
+      console.log('NINEP:', ninep);
+    }
+  };
+
+  const defaultFieldTest = (name, index, talkToMe) => {
+    const wrapper = mount(<Address address={address}  />);
+    const welcome = <p className="App-intro">{name}</p>;
+    getIndex(wrapper, index, talkToMe);
+    expect(wrapper.contains(welcome)).toEqual(true);
+  };
+
+  const afterClickFieldTest = (name, index, talkToMe) => {
+    const wrapper = mount(<Address address={address}/>);
+    const patty = <p className="App-intro">{name}</p>;
+    /*wrapper.find('button#setAddress').simulate('click');*/
+    wrapper.find('button#showAddressClick').simulate('click');
+    getIndex(wrapper, index, talkToMe);
+    expect(wrapper.contains(patty)).toEqual(true);
+  };
+
+  it('renders and displays the default first name', () => {
+    defaultFieldTest('firstName: unknown', 0);
+  });
+
+  it('renders and displays the default last name', () => {
+    defaultFieldTest('lastName: unknown', 0);
+  });
+
+  it('renders and displays the default street', () => {
+    defaultFieldTest('street: unknown', 0);
+  });
+
+  it('renders and displays the default city', () => {
+    defaultFieldTest('city: unknown', 0);
+  });
+
+  it('renders and displays the default state', () => {
+    defaultFieldTest('state: unknown', 0);
+  });
+
+  it('renders and displays the default zip', () => {
+    defaultFieldTest('zip: unknown', 0);
+  });
+
+  it('renders and displays the default phone', () => {
+    defaultFieldTest('phone: unknown', 0);
+  });
+
+  it('renders and displays the default website', () => {
+    defaultFieldTest('website: unknown', 0);
+  });
+
+
+  // Begin tests with button click
+  // -----------------------------
+  it('renders the first address for first name', () => {
+    afterClickFieldTest('firstName: Patty', 0);
+  });
+
+  it('renders the first address for last name', () => {
+    afterClickFieldTest('lastName: Murray', 0);
+  });
+
+  it('renders the first address for street', () => {
+    afterClickFieldTest('street: 915 2nd Avenue', 0);
+  });
+
+  it('renders the first address for city', () => {
+    afterClickFieldTest('city: Seattle', 0);
+  });
+
+  it('renders the first address for state', () => {
+    afterClickFieldTest('state: WA', 0);
+  });
+
+  it('renders the first address for zip', () => {
+    afterClickFieldTest('zip: 98174', 0);
+  });
+
+  it('renders the first address for phone', () => {
+    afterClickFieldTest('phone: (206) 553-5545', 0);
+  });
+
+  it('renders the first address for website', () => {
+    afterClickFieldTest('website: www.murray.senate.gov', 0);
+  });
+
+
+});
 
 
 
+
+
+
+
+
+/*
 describe('Address Default Value Test Suite', function() {
 
   // getLast and getFirst are for debugging
@@ -131,3 +243,5 @@ describe('Address Default Value Test Suite', function() {
 
 
 });
+
+  */
