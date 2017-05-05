@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import ElfHeader from './components/ElfHeader';
-import App from './components/App';
-import Address from './components/Address';
+import ElfMenu from './components/ElfMenu';
+//import SmallNumbers from './components/SmallNumbers';
+//import Address from './components/Address';
 
 //import addresses from './components/AddressList';
 import './css/index.css';
@@ -11,9 +12,8 @@ import './css/index.css';
 
 ReactDOM.render(
   <div>
-    <ElfHeader/>
-    <App />
-    <Address /*address={addresses}*/ />
+    <ElfHeader />
+    <ElfMenu />
   </div>,
   document.getElementById('root')
 );

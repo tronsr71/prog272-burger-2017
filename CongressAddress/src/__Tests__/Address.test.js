@@ -3,8 +3,7 @@ import { mount } from 'enzyme';
 
 import Address from "../components/Address";
 import addresses from '../components/AddressList';
-import '../css/index.css';
-
+import AddressShow from '../components/AddressList';
 
 const address = addresses[0];
 
@@ -34,8 +33,7 @@ describe('Address mount Suite', function () {
   const afterClickFieldTest = (name, index, talkToMe) => {
     const wrapper = mount(<Address address={address}/>);
     const patty = <p className="App-intro">{name}</p>;
-    /*wrapper.find('button#setAddress').simulate('click');*/
-    wrapper.find('button#showAddressClick').simulate('click');
+    wrapper.find('button#showNextAddressClick').simulate('click');
     getIndex(wrapper, index, talkToMe);
     expect(wrapper.contains(patty)).toEqual(true);
   };
