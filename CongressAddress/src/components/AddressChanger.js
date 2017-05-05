@@ -1,8 +1,6 @@
 import React from 'react';
-//import addresses from './AddressList';
-import Address from './Address';
 
-//import AddressShow from './AddressShow';
+import Address from './Address';
 import AddressEdit from './AddressEdit';
 import '../css/App.css';
 

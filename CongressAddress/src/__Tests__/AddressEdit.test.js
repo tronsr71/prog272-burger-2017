@@ -2,14 +2,10 @@ import React from 'react';
 import { mount } from 'enzyme';
 
 import addresses from '../components/AddressList';
-import Address from "../components/Address";
-import AddressEdit from "../components/AddressEdit";
 import AddressChanger from "../components/AddressChanger";
 import ElfTestDebug from '../ElfTestDebug';
 const elfTestDebug = new ElfTestDebug(true);
 
-
-const address = addresses[0];
 
 describe('AddressEdit Mount Suite', function () {
 
@@ -33,7 +29,6 @@ describe('AddressEdit Mount Suite', function () {
     //elfTestDebug.getLast(wrapper, 'input');
     defaultFieldTest('inputLastName', 0);
   });
-
 
 
 });
