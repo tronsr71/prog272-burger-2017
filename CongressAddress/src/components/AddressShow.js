@@ -15,7 +15,6 @@ class AddressShow extends Component {
       const label = this.constructor.name + ': ';
       console.log(label, message, message2, message3);
     }
-
   }
 
   render() {
@@ -33,7 +32,7 @@ class AddressShow extends Component {
         <p className="App-intro">website: {this.props.address.website}</p>
 
         <button id="showPrevAddressClick" >Get Prev Address (not working)</button>
-        <button id="showNextAddressClick" onClick={this.props.onAddressChange}>Get Next Address</button>
+        <button id="showNextAddressClick" onClick={this.props.onNextAddressChange}>Get Next Address</button>
 
       </div>
     );

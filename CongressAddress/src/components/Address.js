@@ -21,12 +21,19 @@ class Address extends Component {
       address: address
     };
     this.quiet = true;
-
   }
 
 
-  onAddressChange = (event) => {
-    this.addressIndex = 1;
+  onPrevAddressChange = (event) => {
+    if (this.addressIndex !== 0)
+    {
+      this.addressIndex -= 1;
+      console.log('address index: ' + this.addressIndex);
+
+    }
+    else
+      this.addressIndex = addresses.length;
+
     const address = addresses[this.addressIndex];
 
     this.setState({
@@ -34,6 +41,23 @@ class Address extends Component {
     })
   };
 
+  onNextAddressChange = (event) => {
+    if (this.addressIndex !== addresses.length)
+    {
+      this.addressIndex += 1;
+      console.log('address index: ' + this.addressIndex);
+
+    }
+
+    else
+      this.addressIndex = 0;
+
+    const address = addresses[this.addressIndex];
+
+    this.setState({
+      address: address
+    })
+  };
 
   onNameChange = (event) => {
     //this.log("ON NAME CHANGE");
@@ -80,7 +104,8 @@ class Address extends Component {
       <div id="addressRender" className="App">
         <AddressShow
           address={this.state.address}
-          onAddressChange={this.onAddressChange}
+          onPrevAddressChange={this.onPrevAddressChange}
+          onNextAddressChange={this.onNextAddressChange}
         />
       </div>
     );

@@ -12,7 +12,6 @@ describe('Address Changer Test Suite', function () {
   var quiet = true;
 
 
-
   it('Validates that true equals true', () => {
     expect(true).toEqual(true);
   });
