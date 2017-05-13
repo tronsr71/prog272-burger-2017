@@ -6,10 +6,10 @@ class ElfHeader extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1>Welcome to the Jungle</h1>
+      <div className='App'>
+        <div className='App-header'>
+          <img src={logo} className='App-logo' alt='logo' />
+          <h1>Welcome to Congress Contacts</h1>
         </div>
       </div>
     );

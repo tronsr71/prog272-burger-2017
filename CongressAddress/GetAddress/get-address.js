@@ -1,4 +1,4 @@
-var fs=require("fs");
+var fs = require('fs');
 var debug = require('debug')('get-address');
 
 debug('Testing debug');
@@ -55,17 +55,18 @@ function getEmail(first, middle, last, state) {
   state = state.toLowerCase();
 
   if (middle !== '') {
-    middle = middle.toLowerCase().substring(0,1);
-    return first + '.' + middle + '.' + last + '@' + state + '.senate.gov'
+    middle = middle.toLowerCase().substring(0, 1);
+    return first + '.' + middle + '.' + last + '@' + state + '.senate.gov';
   }
+
   else {
-    return first + '.' + last + '@' + state + '.senate.gov'
+    return first + '.' + last + '@' + state + '.senate.gov';
   }
 }
 
 function writeIt(label, value, noComma) {
-  var comma = noComma ? "'" : "',";
-  console.log('\t' + label, "'" + value + comma)
+  var comma = noComma ? '\'' : '\',';
+  console.log('\t' + label, '\'' + value + comma);
 };
 
 readFile('address.json').then(function(text) {

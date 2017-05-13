@@ -10,12 +10,13 @@ class Address extends Component {
 
     console.log('Address constructor is being called');
 
-    // if (!this.props.address) {
-    //   //throw "No props in Address. You must pass in props";
-    //   throw new Error("No props in Address. You must pass in props.");
-    // }
+    this.onAddressChange = this.onAddressChange.bind(this);
+    this.onNameChange = this.onNameChange.bind(this);
 
-    this.addressIndex=0;
+    if (this.addressIndex === undefined) {
+      console.log('we hit index undef');
+      this.addressIndex = 0;
+    }
     const address = addresses[this.addressIndex];
     this.state = {
       address: address
@@ -23,44 +24,40 @@ class Address extends Component {
     this.quiet = true;
   }
 
+  onAddressChange(event) {
 
-  onPrevAddressChange = (event) => {
-    if (this.addressIndex !== 0)
+    // we increment our adddress index here
+    if(event.target.id.includes('Next'))
     {
-      this.addressIndex -= 1;
-      console.log('address index: ' + this.addressIndex);
+      if (this.addressIndex !== addresses.length - 1)
+        this.addressIndex += 1;
 
+      else // we do this to wrap around
+        this.addressIndex = 0;
     }
+
+    // we decrement our adddress index here
     else
-      this.addressIndex = addresses.length;
+    {
+      if (this.addressIndex !== 0)
+        this.addressIndex -= 1;
+
+      else // we do this to wrap around
+        this.addressIndex = addresses.length - 1;
+    }
+
+    console.log('address index: ' + this.addressIndex);
 
     const address = addresses[this.addressIndex];
 
     this.setState({
       address: address
-    })
+    });
   };
 
-  onNextAddressChange = (event) => {
-    if (this.addressIndex !== addresses.length)
-    {
-      this.addressIndex += 1;
-      console.log('address index: ' + this.addressIndex);
-
-    }
-
-    else
-      this.addressIndex = 0;
-
-    const address = addresses[this.addressIndex];
-
-    this.setState({
-      address: address
-    })
-  };
-
-  onNameChange = (event) => {
+  onNameChange(event) {
     //this.log("ON NAME CHANGE");
+    console.log('from oNC: indrx: ' + this.addressIndex);
     const address = addresses[this.addressIndex];
     switch (event.target.id) {
       case 'inputFirstName':
@@ -94,18 +91,18 @@ class Address extends Component {
 
     this.setState({
       address: address
-    })
+    });
   };
-
 
   render() {
     if (!this.quiet) { console.log("ADDRESS RENDER"); }
     return (
-      <div id="addressRender" className="App">
+      <div id='addressRender' className='App'>
         <AddressShow
           address={this.state.address}
-          onPrevAddressChange={this.onPrevAddressChange}
-          onNextAddressChange={this.onNextAddressChange}
+          onAddressChange={this.onAddressChange}
+          // onPrevAddressChange={this.onNextAddressChange}
+          // onNextAddressChange={this.onNextAddressChange}
         />
       </div>
     );

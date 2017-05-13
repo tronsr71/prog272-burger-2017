@@ -6,22 +6,29 @@ class App extends Component {
     super(); // generic call for parent constructor
     this.state = {
         nine: '0'
-    }
+    };
 
   }
 
   getNine = () => {
-    //alert("bar was called");
     this.setState({ nine: '9' });
-  }
+  };
 
   render() {
     return (
-      <div className="App">
-        <p className="App-intro">
-          Nine: {this.state.nine}
-        </p>
-        <button id="appBtn" onClick={this.getNine}>Get Nine</button>
+      <div id='smallNumbers' className='App'>
+        <div className='ContentBG'>
+
+          <div className='Content'>
+            <label id='numbersLabel'>Num: </label>
+            <span id='numbersText'>{this.state.nine}</span>
+          </div>
+
+          <div className='FooterButtonsContainer'>
+            <button id='btnSmallNumbers' className='FooterButtons' onClick={this.getNine}>Get Nine</button>
+          </div>
+
+        </div>
       </div>
     );
   }

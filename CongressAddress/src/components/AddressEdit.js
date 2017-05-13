@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import '../css/App.css';
 
+//import addresses from './AddressList';
 
 class AddressEdit extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.quiet = true;
-  //   this.log('CONSTRUCTOR', this.props.address);
-  // }
+  constructor(props) {
+    super(props);
+    this.quiet = true;
+  }
 
   // log(message, message2 = '', message3 = '') {
   //
@@ -17,24 +17,56 @@ class AddressEdit extends Component {
   //   }
   // }
 
+
+
   render() {
 
-    //this.log("RENDER");
+    //this.log('RENDER');
 
     return (
-      <div id="addressShowRender" className="App">
-
-        <input id="inputFirstName" className="App-intro" value={this.props.address.firstName} onChange={this.props.onNameChange}/> <br />
-        <input id="inputLastName" className="App-intro" value={this.props.address.lastName} onChange={this.props.onNameChange}/>  <br />
-        <input id="inputStreet" className="App-intro" value={this.props.address.street} onChange={this.props.onNameChange}/>  <br />
-        <input id="inputCity" className="App-intro" value={this.props.address.city} onChange={this.props.onNameChange}/>  <br />
-        <input id="inputState" className="App-intro" value={this.props.address.state} onChange={this.props.onNameChange}/>  <br />
-        <input id="inputZip" className="App-intro" value={this.props.address.zip} onChange={this.props.onNameChange}/>  <br />
-        <input id="inputPhone" className="App-intro" value={this.props.address.phone} onChange={this.props.onNameChange}/>  <br />
-        <input id="inputWebsite" className="App-intro" value={this.props.address.website} onChange={this.props.onNameChange}/>  <br />
-
-        <button id="showAddressClick" onClick={this.props.onAddressChange}>Edit Address</button>
-
+      <div id='addressEditRender'>
+        <div className='ContentBG'>
+          <div className='Content'>
+            <label className='AddressLabels'>First Name: </label>
+            <input id='inputFirstName' className='AddressEditFields'
+                   value={this.props.address.firstName}
+                   onChange={this.props.onNameChange}/> <br />
+            <label className='AddressLabels'>Last Name: </label>
+            <input id='inputLastName' className='AddressEditFields'
+                   value={this.props.address.lastName}
+                   onChange={this.props.onNameChange}/>  <br />
+            <label className='AddressLabels'>Street: </label>
+            <input id='inputStreet' className='AddressEditFields'
+                   value={this.props.address.street}
+                   onChange={this.props.onNameChange}/>  <br />
+            <label className='AddressLabels'>City: </label>
+            <input id='inputCity' className='AddressEditFields'
+                   value={this.props.address.city}
+                   onChange={this.props.onNameChange}/>  <br />
+            <label className='AddressLabels'>State: </label>
+            <input id='inputState' className='AddressEditFields'
+                   value={this.props.address.state}
+                   onChange={this.props.onNameChange}/>  <br />
+            <label className='AddressLabels'>Zip Code: </label>
+            <input id='inputZip' className='AddressEditFields'
+                   value={this.props.address.zip}
+                   onChange={this.props.onNameChange}/>  <br />
+            <label className='AddressLabels'>Phone: </label>
+            <input id='inputPhone' className='AddressEditFields'
+                   value={this.props.address.phone}
+                   onChange={this.props.onNameChange}/>  <br />
+            <label className='AddressLabels'>Website: </label>
+            <input id='inputWebsite' className='AddressEditFields'
+                   value={this.props.address.website}
+                   onChange={this.props.onNameChange}/>  <br />
+          </div>
+          <div className='FooterButtonsContainer'>
+            <button id='showPrevAddressClick' className='FooterButtons'
+                    onClick={this.props.onAddressChange}>Get Prev Address</button>
+            <button id='showNextAddressClick'  className='FooterButtons'
+                    onClick={this.props.onAddressChange}>Get Next Address</button>
+          </div>
+        </div>
       </div>
     );
   }

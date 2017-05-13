@@ -1,24 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  /*border: 1px solid blue;*/
+}
+
 .App {
-  text-align: center;
+  margin: 5px;
+  border: 1px solid black;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
+  animation: App-logo-spin infinite 23s linear;
+  height: 120px;
 }
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.App-header {
+  background-color: #222;
+  min-height: 180px;
+  padding-top: 40px;
+  text-align: center;
+  color: white;
+}
+
+.MenuBar {
+  min-height: 50px;
+  /*border: 1px solid blue;*/
+  background: linear-gradient(90deg, red, orange);
+  text-align: center;
+}
+
+.MenuItems {
+  display: inline-block;
+  margin: 10px 5px;
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 200px;
+  height: 25px;
+  background: rgba(255, 255, 255, 0.5);
+  padding-top: 5px;
+}
+
+/*Link {*/
+  /*margin: 5px;*/
+  /*border: 1px solid black;*/
+/*}*/
+
+.ContentBG {
+  /*height: 350px;*/
+  background: linear-gradient(90deg, orange, red);
+  /*border: 2px solid blue;*/
+}
+
+.Content {
+  display: inline-block;
+  Width: 622px;
+  Height: 200px;
+  margin: 10px;
+  border: 1px solid white;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  padding-top: 15px;
+  text-align: left;
+}
+
+.AddressLabels {
+  display: inline-block;
+  margin-right: 5px;
+  width: 180px;
+  height: 22px;
+  /*border: 1px solid red;*/
+  text-align: right;
+  font-weight: bold;
+}
+
+.AddressEditFields {
+  width: 300px;
+}
+
+#addressRender {
+  /*border: 1px solid yellow;*/
+}
+
+#addressShowRender {
+  /*border: 1px solid black;*/
+  text-align: center;
+}
+
+#addressChangerRender {
+  /*border: 1px solid red;*/
+}
+
+#addressEditRender {
+  /*border: 1px solid yellow;*/
+  text-align: center;
+}
+
+#smallNumbers {
+  /*border: 1px solid yellow;*/
+  text-align: center;
+}
+
+#numbersLabel {
+  display: inline-block;
+  margin-top: 60px;
+  width: 240px;
+  font-size: 48px;
+  text-align: right;
+  /*border: 1px solid black;*/
+}
+
+#numbersText {
+  display: inline-block;
+  margin-left: 35px;
+  font-size: 120px;
+  text-align: left;
+  /*border: 1px solid black;*/
+}
+
+.FooterButtonsContainer {
+  height: 50px;
+  /*border-top: 1px solid black;*/
+  background: linear-gradient(90deg, orange, red);
+}
+
+.FooterButtons {
+  margin: 10px 5px;
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 200px;
+  min-height: 32px;
+  background: rgba(255, 255, 255, 0.5);
 }

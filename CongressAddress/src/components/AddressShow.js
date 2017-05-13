@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../css/App.css';
 
-
 class AddressShow extends Component {
   constructor(props) {
     super(props);
@@ -18,22 +17,37 @@ class AddressShow extends Component {
   }
 
   render() {
-    this.log("RENDER");
+    this.log('RENDER');
 
     return (
-      <div id="addressShowRender" className="App">
-        <p className="App-intro">firstName: {this.props.address.firstName}</p>
-        <p className="App-intro">lastName: {this.props.address.lastName}</p>
-        <p className="App-intro">street: {this.props.address.street}</p>
-        <p className="App-intro">city: {this.props.address.city}</p>
-        <p className="App-intro">state: {this.props.address.state}</p>
-        <p className="App-intro">zip: {this.props.address.zip}</p>
-        <p className="App-intro">phone: {this.props.address.phone}</p>
-        <p className="App-intro">website: {this.props.address.website}</p>
+      <div id='addressShowRender'>
+        <div className='ContentBG'>
+          <div className='Content'>
+            <label className='AddressLabels'>First Name: </label>
+            <span className='AddressShowFields'>{this.props.address.firstName}</span> <br />
+            <label className='AddressLabels'>Last Name: </label>
+            <span className='AddressShowFields'>{this.props.address.lastName}</span> <br />
+            <label className='AddressLabels'>Street: </label>
+            <span className='AddressShowFields'>{this.props.address.street}</span> <br />
+            <label className='AddressLabels'>City: </label>
+            <span className='AddressShowFields'>{this.props.address.city}</span> <br />
+            <label className='AddressLabels'>State: </label>
+            <span className='AddressShowFields'>{this.props.address.state}</span> <br />
+            <label className='AddressLabels'>Zip Code: </label>
+            <span className='AddressShowFields'>{this.props.address.zip}</span> <br />
+            <label className='AddressLabels'>Phone: </label>
+            <span className='AddressShowFields'>{this.props.address.phone}</span> <br />
+            <label className='AddressLabels'>Website: </label>
+            <span className='AddressShowFields'>{this.props.address.website}</span> <br />
+          </div>
 
-        <button id="showPrevAddressClick" >Get Prev Address (not working)</button>
-        <button id="showNextAddressClick" onClick={this.props.onNextAddressChange}>Get Next Address</button>
-
+          <div className='FooterButtonsContainer'>
+            <button id='showPrevAddressClick' className='FooterButtons'
+                    onClick={this.props.onAddressChange}>Get Prev Address</button>
+            <button id='showNextAddressClick'  className='FooterButtons'
+                    onClick={this.props.onAddressChange}>Get Next Address</button>
+          </div>
+        </div>
       </div>
     );
   }

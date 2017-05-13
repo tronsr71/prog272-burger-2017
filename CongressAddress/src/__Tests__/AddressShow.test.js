@@ -2,8 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import addresses from '../components/AddressList';
-import Address from "../components/Address";
-import AddressShow from "../components/AddressShow";
+import Address from '../components/Address';
+import AddressShow from '../components/AddressShow';
 
 const address = addresses[0];
 
@@ -25,10 +25,14 @@ describe('AddressShow Shallow Suite', function () {
 
   const defaultFieldTest = (name, index, talkToMe) => {
     const wrapper = shallow(<AddressShow address={address}  />);
-    const welcome = <p className="App-intro">{name}</p>;
+    const welcome = <p className='App-intro'>{name}</p>;
     getIndex(wrapper, index, talkToMe);
     expect(wrapper.contains(welcome)).toEqual(true);
   };
+
+  // const callBack = () => {
+  //   clicked = true;
+  // };
 
 
   it('renders and displays the default first name', () => {
@@ -62,6 +66,5 @@ describe('AddressShow Shallow Suite', function () {
   it('renders and displays the default website', () => {
     defaultFieldTest('website: unknown', 0);
   });
-
 
 });
