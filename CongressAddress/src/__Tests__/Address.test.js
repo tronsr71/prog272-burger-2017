@@ -1,10 +1,13 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { mount } from 'enzyme';
 
-import Address from "../components/Address";
+import Address from '../components/Address';
 import addresses from '../components/AddressList';
-import AddressShow from '../components/AddressList';
+import AddressShow from '../components/AddressShow';
+import ElfDebugEnzyme from '../ElfTestDebug';
 
+const elfTestDebug = new ElfDebugEnzyme(true);
 const address = addresses[0];
 
 describe('Address mount Suite', function () {
@@ -13,233 +16,177 @@ describe('Address mount Suite', function () {
 
   /*
    * @param {object} wrapper - Container for a bunch of HTML nodes
+   * @param {string} type - Type of test.
    * @param {number} index - Index of HTML element.
    * @param {boolean} talkToMe - Speak even if quiet is true
    */
-  const getIndex = function(wrapper, index, talkToMe) {
+  const debugAtIndex = function(wrapper, type, index, talkToMe) {
     if (!quiet || talkToMe) {
-      const ninep = wrapper.find('div#addressRender').childAt(index).debug();
-      console.log('NINEP:', ninep);
+      const content = wrapper.find('div.Content').childAt(index).debug();
+      console.log('Inside Address.test.js\nRendered Content for',
+        type + ' at index: ' + index + '\n' + content);
     }
   };
 
-  const defaultFieldTest = (name, index, talkToMe) => {
-    const wrapper = mount(<Address address={address}  />);
-    const welcome = <p className="App-intro">{name}</p>;
-    getIndex(wrapper, index, talkToMe);
-    expect(wrapper.contains(welcome)).toEqual(true);
+  const defaultField = (fieldName, text, index, talkToMe) => {
+    const wrapper = mount(<Address address={address} />);
+    const label = <label className='AddressLabels'>{fieldName}</label>;
+    const expectedText = <span className='AddressShowFields'>{text}</span>;
+    debugAtIndex(wrapper, 'default', index, talkToMe);
+    expect(wrapper.contains([label, expectedText])).toEqual(true);
   };
 
-  const afterClickFieldTest = (name, index, talkToMe) => {
-    const wrapper = mount(<Address address={address}/>);
-    const patty = <p className="App-intro">{name}</p>;
+  const fieldAfterPrevClick = (fieldName, text, index, talkToMe) => {
+    const wrapper = mount(<Address address={address} />);
+    wrapper.find('button#showPrevAddressClick').simulate('click');
+    const label = <label className='AddressLabels'>{fieldName}</label>;
+    const expectedText = <span className='AddressShowFields'>{text}</span>;
+    debugAtIndex(wrapper, 'prev-click', index, talkToMe);
+    expect(wrapper.contains([label, expectedText])).toEqual(true);
+  };
+
+  const fieldAfterNextClick = (fieldName, text, index, talkToMe) => {
+    const wrapper = mount(<Address address={address} />);
     wrapper.find('button#showNextAddressClick').simulate('click');
-    getIndex(wrapper, index, talkToMe);
-    expect(wrapper.contains(patty)).toEqual(true);
+    const label = <label className='AddressLabels'>{fieldName}</label>;
+    const expectedText = <span className='AddressShowFields'>{text}</span>;
+    if (index !== undefined) {
+      debugAtIndex(wrapper, 'next-click', index, talkToMe);
+    }
+    expect(wrapper.contains([label, expectedText])).toEqual(true);
   };
 
-  it('renders and displays the default first name', () => {
-    defaultFieldTest('firstName: unknown', 0);
+  // Simple test to see if we can render inside our component
+  // --------------------------------------------------------
+  it('renders our Address component without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<Address />, div);
   });
 
-  it('renders and displays the default last name', () => {
-    defaultFieldTest('lastName: unknown', 0);
+  // Begin tests with DEFAULT FIELD VALUES
+  // -------------------------------------
+  it('renders the DEFAULT address for FIRST-NAME', () => {
+    defaultField('First Name: ', 'unknown', 1, true);
   });
 
-  it('renders and displays the default street', () => {
-    defaultFieldTest('street: unknown', 0);
+  it('renders the DEFAULT address for LAST-NAME', () => {
+    defaultField('Last Name: ', 'unknown', 4, true);
   });
 
-  it('renders and displays the default city', () => {
-    defaultFieldTest('city: unknown', 0);
+  it('renders the DEFAULT address for STREET', () => {
+    defaultField('Street: ', 'unknown');
   });
 
-  it('renders and displays the default state', () => {
-    defaultFieldTest('state: unknown', 0);
+  it('renders the DEFAULT address for CITY', () => {
+    defaultField('City: ', 'unknown');
   });
 
-  it('renders and displays the default zip', () => {
-    defaultFieldTest('zip: unknown', 0);
+  it('renders the DEFAULT address for STATE', () => {
+    defaultField('State: ', 'unknown');
   });
 
-  it('renders and displays the default phone', () => {
-    defaultFieldTest('phone: unknown', 0);
+  it('renders the DEFAULT address for ZIP-CODE', () => {
+    defaultField('Zip Code: ', 'unknown');
   });
 
-  it('renders and displays the default website', () => {
-    defaultFieldTest('website: unknown', 0);
+  it('renders the DEFAULT address for PHONE', () => {
+    defaultField('Phone: ', 'unknown');
   });
 
-
-  // Begin tests with button click
-  // -----------------------------
-  it('renders the first address for first name', () => {
-    afterClickFieldTest('firstName: Patty', 0);
+  it('renders the DEFAULT address for WEBSITE', () => {
+    defaultField('Website: ', 'unknown');
   });
 
-  it('renders the first address for last name', () => {
-    afterClickFieldTest('lastName: Murray', 0);
+  it('renders the DEFAULT address for EMAIL', () => {
+    defaultField('Email: ', 'unknown');
   });
 
-  it('renders the first address for street', () => {
-    afterClickFieldTest('street: 915 2nd Avenue', 0);
+  it('renders the DEFAULT address for CONTACT', () => {
+    defaultField('Contact: ', 'unknown');
   });
 
-  it('renders the first address for city', () => {
-    afterClickFieldTest('city: Seattle', 0);
+  // Begin tests with PREV button click
+  // ----------------------------------
+  it('renders the LAST address for FIRST-NAME', () => {
+    fieldAfterPrevClick('First Name: ', 'Jim', 1, true);
   });
 
-  it('renders the first address for state', () => {
-    afterClickFieldTest('state: WA', 0);
+  it('renders the LAST address for LAST-NAME', () => {
+    fieldAfterPrevClick('Last Name: ', 'Cooper', 4, true);
   });
 
-  it('renders the first address for zip', () => {
-    afterClickFieldTest('zip: 98174', 0);
+  it('renders the LAST address for STREET', () => {
+    fieldAfterPrevClick('Street: ', '1536 Longworth House Office Building');
   });
 
-  it('renders the first address for phone', () => {
-    afterClickFieldTest('phone: (206) 553-5545', 0);
+  it('renders the LAST address for CITY', () => {
+    fieldAfterPrevClick('City: ', 'Washington DC');
   });
 
-  it('renders the first address for website', () => {
-    afterClickFieldTest('website: www.murray.senate.gov', 0);
+  it('renders the LAST address for STATE', () => {
+    fieldAfterPrevClick('State: ', 'TN');
   });
 
+  it('renders the LAST address for ZIP-CODE', () => {
+    fieldAfterPrevClick('Zip Code: ', '20515-4205');
+  });
+
+  it('renders the LAST address for PHONE', () => {
+    fieldAfterPrevClick('Phone: ', '202-225-4311');
+  });
+
+  it('renders the LAST address for WEBSITE', () => {
+    fieldAfterPrevClick('Website: ', 'http://cooper.house.gov');
+  });
+
+  it('renders the LAST address for EMAIL', () => {
+    fieldAfterPrevClick('Email: ', 'jim.cooper@tn.senate.gov');
+  });
+
+  it('renders the LAST address for CONTACT', () => {
+    fieldAfterPrevClick('Contact: ', 'unknown');
+  });
+
+  // Begin tests with NEXT button click
+  // ----------------------------------
+  it('renders the FIRST address for FIRST-NAME', () => {
+    fieldAfterNextClick('First Name: ', 'Patty');
+  });
+
+  it('renders the FIRST address for LAST-NAME', () => {
+    fieldAfterNextClick('Last Name: ', 'Murray');
+  });
+
+  it('renders the FIRST address for STREET', () => {
+    fieldAfterNextClick('Street: ', '915 2nd Avenue');
+  });
+
+  it('renders the FIRST address for CITY', () => {
+    fieldAfterNextClick('City: ', 'Seattle');
+  });
+
+  it('renders the FIRST address for STATE', () => {
+    fieldAfterNextClick('State: ', 'WA');
+  });
+
+  it('renders the FIRST address for ZIP-CODE', () => {
+    fieldAfterNextClick('Zip Code: ', '98174');
+  });
+
+  it('renders the FIRST address for PHONE', () => {
+    fieldAfterNextClick('Phone: ', '206-553-5545');
+  });
+
+  it('renders the FIRST address for WEBSITE', () => {
+    fieldAfterNextClick('Website: ', 'www.murray.senate.gov');
+  });
+
+  it('renders the FIRST address for EMAIL', () => {
+    fieldAfterNextClick('Email: ', 'pmurray@gmail.com');
+  });
+
+  it('renders the FIRST address for CONTACT', () => {
+    fieldAfterNextClick('Contact: ', 'http://some-office.gov');
+  });
 
 });
-
-
-
-
-
-
-
-
-/*
-describe('Address Default Value Test Suite', function() {
-
-  // getLast and getFirst are for debugging
-  const getLast = (wrapper) => {
-    const ninep = wrapper.find('p').last().debug();
-    console.log(ninep);
-  };
-
-  const getFirst = (wrapper) => {
-    const ninep = wrapper.find('p').first().debug();
-    console.log(ninep);
-  };
-
-  it('renders and displays the default value for firstName', () => {
-    const wrapper = shallow(<Address address={addresses}/>);
-    const display = <p className="App-intro">firstName: unknown</p>;
-    expect(wrapper.contains(display)).toEqual(true);
-  });
-
-  it('renders and displays the default value for lastName', () => {
-    const wrapper = shallow(<Address address={addresses}/>);
-    const display = <p className="App-intro">lastName: unknown</p>;
-    expect(wrapper.contains(display)).toEqual(true);
-  });
-
-  it('renders and displays the default value for street', () => {
-    const wrapper = shallow(<Address address={addresses}/>);
-    const display = <p className="App-intro">street: unknown</p>;
-    expect(wrapper.contains(display)).toEqual(true);
-  });
-
-  it('renders and displays the default value for city', () => {
-    const wrapper = shallow(<Address address={addresses}/>);
-    const display = <p className="App-intro">city: unknown</p>;
-    expect(wrapper.contains(display)).toEqual(true);
-  });
-
-  it('renders and displays the default value for state', () => {
-    const wrapper = shallow(<Address address={addresses}/>);
-    const display = <p className="App-intro">state: unknown</p>;
-    expect(wrapper.contains(display)).toEqual(true);
-  });
-
-  it('renders and displays the default value for zip', () => {
-    const wrapper = shallow(<Address address={addresses}/>);
-    const display = <p className="App-intro">zip: unknown</p>;
-    expect(wrapper.contains(display)).toEqual(true);
-  });
-
-  it('renders and displays the default value for phone', () => {
-    const wrapper = shallow(<Address address={addresses}/>);
-    const display = <p className="App-intro">phone: unknown</p>;
-    expect(wrapper.contains(display)).toEqual(true);
-  });
-
-  it('renders and displays the default value for website', () => {
-    const wrapper = shallow(<Address address={addresses}/>);
-    const display = <p className="App-intro">website: unknown</p>;
-    expect(wrapper.contains(display)).toEqual(true);
-  });
-
-// });
-//
-//
-//
-// describe('Address First Address (index=1) Value Test Suite', function() {
-
-  it('renders the first (index=1) AddressList value for firstName', () => {
-    const wrapper = shallow(<Address address={addresses}/>);
-    const display = <p className="App-intro">firstName: Patty</p>;
-    wrapper.find('button#getAddressBtn').simulate('click');
-    expect(wrapper.contains(display)).toEqual(true);
-  });
-
-  it('renders the first (index=1) AddressList value for lastName', () => {
-    const wrapper = shallow(<Address address={addresses}/>);
-    const display = <p className="App-intro">lastName: Murray</p>;
-    wrapper.find('button#getAddressBtn').simulate('click');
-    expect(wrapper.contains(display)).toEqual(true);
-  });
-
-  it('renders the first (index=1) AddressList value for street', () => {
-    const wrapper = shallow(<Address address={addresses}/>);
-    const display = <p className="App-intro">street: 915 2nd Avenue</p>;
-    wrapper.find('button#getAddressBtn').simulate('click');
-    expect(wrapper.contains(display)).toEqual(true);
-  });
-
-  it('renders the first (index=1) AddressList value for city', () => {
-    const wrapper = shallow(<Address address={addresses}/>);
-    const display = <p className="App-intro">city: Seattle</p>;
-    wrapper.find('button#getAddressBtn').simulate('click');
-    expect(wrapper.contains(display)).toEqual(true);
-  });
-
-  it('renders the first (index=1) AddressList value for state', () => {
-    const wrapper = shallow(<Address address={addresses}/>);
-    const display = <p className="App-intro">state: WA</p>;
-    wrapper.find('button#getAddressBtn').simulate('click');
-    expect(wrapper.contains(display)).toEqual(true);
-  });
-
-  it('renders the first (index=1) AddressList value for zip', () => {
-    const wrapper = shallow(<Address address={addresses}/>);
-    const display = <p className="App-intro">zip: 98174</p>;
-    wrapper.find('button#getAddressBtn').simulate('click');
-    expect(wrapper.contains(display)).toEqual(true);
-  });
-
-  it('renders the first (index=1) AddressList value for phone', () => {
-    const wrapper = shallow(<Address address={addresses}/>);
-    const display = <p className="App-intro">phone: (206) 553-5545</p>;
-    wrapper.find('button#getAddressBtn').simulate('click');
-    expect(wrapper.contains(display)).toEqual(true);
-  });
-
-  it('renders the first (index=1) AddressList value for website', () => {
-    const wrapper = shallow(<Address address={addresses}/>);
-    const display = <p className="App-intro">website: www.murray.senate.gov</p>;
-    wrapper.find('button#getAddressBtn').simulate('click');
-    expect(wrapper.contains(display)).toEqual(true);
-  });
-
-
-});
-
-  */

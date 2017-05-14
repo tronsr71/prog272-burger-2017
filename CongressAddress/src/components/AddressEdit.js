@@ -17,8 +17,6 @@ class AddressEdit extends Component {
   //   }
   // }
 
-
-
   render() {
 
     //this.log('RENDER');
@@ -59,7 +57,16 @@ class AddressEdit extends Component {
             <input id='inputWebsite' className='AddressEditFields'
                    value={this.props.address.website}
                    onChange={this.props.onNameChange}/>  <br />
+            <label className='AddressLabels'>Email: </label>
+            <input id='inputEmail' className='AddressEditFields'
+                   value={this.props.address.email}
+                   onChange={this.props.onNameChange}/>  <br />
+            <label className='AddressLabels'>Contact: </label>
+            <input id='inputContact' className='AddressEditFields'
+                   value={this.props.address.contact}
+                   onChange={this.props.onNameChange}/>  <br />
           </div>
+
           <div className='FooterButtonsContainer'>
             <button id='showPrevAddressClick' className='FooterButtons'
                     onClick={this.props.onAddressChange}>Get Prev Address</button>

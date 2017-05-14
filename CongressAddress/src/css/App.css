@@ -21,11 +21,15 @@
 }
 
 .App-header {
-  background-color: #222;
-  min-height: 180px;
-  padding-top: 40px;
+  background-color: black;
+  min-height: 200px;
+  padding-top: 30px;
   text-align: center;
   color: white;
+}
+
+h1 {
+  margin-top: 20px;
 }
 
 .MenuBar {
@@ -46,11 +50,6 @@
   padding-top: 5px;
 }
 
-/*Link {*/
-  /*margin: 5px;*/
-  /*border: 1px solid black;*/
-/*}*/
-
 .ContentBG {
   /*height: 350px;*/
   background: linear-gradient(90deg, orange, red);
@@ -59,8 +58,8 @@
 
 .Content {
   display: inline-block;
-  Width: 622px;
-  Height: 200px;
+  Width: 624px;
+  Height: 240px;
   margin: 10px;
   border: 1px solid white;
   border-radius: 10px;
@@ -108,9 +107,9 @@
 
 #numbersLabel {
   display: inline-block;
-  margin-top: 60px;
+  margin-top: 120px;
   width: 240px;
-  font-size: 48px;
+  font-size: 64px;
   text-align: right;
   /*border: 1px solid black;*/
 }
@@ -118,13 +117,13 @@
 #numbersText {
   display: inline-block;
   margin-left: 35px;
-  font-size: 120px;
+  font-size: 160px;
   text-align: left;
   /*border: 1px solid black;*/
 }
 
 .FooterButtonsContainer {
-  height: 50px;
+  min-height: 50px;
   /*border-top: 1px solid black;*/
   background: linear-gradient(90deg, orange, red);
 }

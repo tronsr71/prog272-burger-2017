@@ -24,21 +24,25 @@ class AddressShow extends Component {
         <div className='ContentBG'>
           <div className='Content'>
             <label className='AddressLabels'>First Name: </label>
-            <span className='AddressShowFields'>{this.props.address.firstName}</span> <br />
+            <span className='AddressShowFields'>{this.props.address.firstName}</span><br />
             <label className='AddressLabels'>Last Name: </label>
-            <span className='AddressShowFields'>{this.props.address.lastName}</span> <br />
+            <span className='AddressShowFields'>{this.props.address.lastName}</span><br />
             <label className='AddressLabels'>Street: </label>
-            <span className='AddressShowFields'>{this.props.address.street}</span> <br />
+            <span className='AddressShowFields'>{this.props.address.street}</span><br />
             <label className='AddressLabels'>City: </label>
-            <span className='AddressShowFields'>{this.props.address.city}</span> <br />
+            <span className='AddressShowFields'>{this.props.address.city}</span><br />
             <label className='AddressLabels'>State: </label>
-            <span className='AddressShowFields'>{this.props.address.state}</span> <br />
+            <span className='AddressShowFields'>{this.props.address.state}</span><br />
             <label className='AddressLabels'>Zip Code: </label>
-            <span className='AddressShowFields'>{this.props.address.zip}</span> <br />
+            <span className='AddressShowFields'>{this.props.address.zip}</span><br />
             <label className='AddressLabels'>Phone: </label>
-            <span className='AddressShowFields'>{this.props.address.phone}</span> <br />
+            <span className='AddressShowFields'>{this.props.address.phone}</span><br />
             <label className='AddressLabels'>Website: </label>
-            <span className='AddressShowFields'>{this.props.address.website}</span> <br />
+            <span className='AddressShowFields'>{this.props.address.website}</span><br />
+            <label className='AddressLabels'>Email: </label>
+            <span className='AddressShowFields'>{this.props.address.email}</span><br />
+            <label className='AddressLabels'>Contact: </label>
+            <span className='AddressShowFields'>{this.props.address.contact}</span><br />
           </div>
 
           <div className='FooterButtonsContainer'>
@@ -53,6 +57,5 @@ class AddressShow extends Component {
   }
 
 } // End class AddressShow
-
 
 export default AddressShow;

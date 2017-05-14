@@ -4,7 +4,6 @@ import { shallow } from 'enzyme';
 
 import SmallNumbers from '../components/SmallNumbers';
 
-
 describe('Small Numbers Test Suite', function() {
 
   it('renders our Small Numbers component without crashing', () => {
@@ -12,18 +11,19 @@ describe('Small Numbers Test Suite', function() {
     ReactDOM.render(<SmallNumbers />, div);
   });
 
-  it('renders and displays the word Nine', () => {
+  it('renders and displays the word Num', () => {
     const wrapper = shallow(<SmallNumbers />);
-    //console.log(wrapper);
-    const nineSign = <p className="App-intro">Nine: 0</p>;
-    expect(wrapper.contains(nineSign)).toEqual(true);
+    const label = <label id='numbersLabel'>Num: </label>;
+    const expectedText = <span id='numbersText'>0</span>;
+    expect(wrapper.contains([label, expectedText])).toEqual(true);
   });
 
   it('renders button click message', () => {
     const wrapper = shallow(<SmallNumbers />);
-    const nineSign = <p className="App-intro">Nine: 9</p>;
-    wrapper.find('button#appBtn').simulate('click');
-    expect(wrapper.contains(nineSign)).toEqual(true);
+    const label = <label id='numbersLabel'>Num: </label>;
+    const expectedText = <span id='numbersText'>9</span>;
+    wrapper.find('button#btnSmallNumbers').simulate('click');
+    expect(wrapper.contains([label, expectedText])).toEqual(true);
   });
 
 });

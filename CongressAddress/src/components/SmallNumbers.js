@@ -4,14 +4,16 @@ import '../css/App.css';
 class App extends Component {
   constructor() {
     super(); // generic call for parent constructor
+    this.getNine = this.getNine.bind(this);
+
     this.state = {
-        nine: '0'
+      nine: '0'
     };
 
   }
 
-  getNine = () => {
-    this.setState({ nine: '9' });
+  getNine() {
+    this.setState({nine: '9'});
   };
 
   render() {
