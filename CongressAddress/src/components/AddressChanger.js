@@ -2,7 +2,7 @@ import React from 'react';
 
 import Address from './Address';
 import AddressEdit from './AddressEdit';
-import addresses from './AddressList';
+//import addresses from './AddressList';
 import '../css/App.css';
 
 class AddressChanger extends Address {

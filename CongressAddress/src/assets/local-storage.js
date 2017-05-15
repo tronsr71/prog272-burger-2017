@@ -1,3 +1,7 @@
+/**
+ * Created by Charlie on 5/8/17.
+ */
+
 function saveToLocalStorageByName(key, item) {
   if (!key) {
     const storageIndex = localStorage.length + 1;

@@ -1,14 +1,17 @@
+import 'whatwg-fetch';
 import React, { Component } from 'react';
 import addresses from './AddressList';
 import AddressShow from './AddressShow';
 import '../css/App.css';
+import Logger from '../assets/elf-logger';
+const logger = new Logger('data-loader', 'yellow', 'green', '18px');
 
 class Address extends Component {
   constructor(props) {
+    //console.log('Address constructor is being called');
     super(props); // generic call for parent constructor
 
-    //console.log('Address constructor is being called');
-
+    logger.log('Address Constructor is being called');
     this.onAddressChange = this.onAddressChange.bind(this);
     this.onNameChange = this.onNameChange.bind(this);
     this.addressIndex = 0;
@@ -18,6 +21,19 @@ class Address extends Component {
     };
     this.quiet = true;
   }
+
+  // fetch('./addresses.json').then(function(data) {
+  //   const addresses = data.json();
+  //   console.log(addresses);
+  //   return addresses;
+  // }).then(function (data) {
+  //   console.log(JSON.stringify(data, null, 4));
+  //   that.addresses = data;
+  //   that.setLocalStorage();
+  // }).catch(function (err) {
+  //   logger.log(err);
+  // })
+
 
   onAddressChange(event) {
 
