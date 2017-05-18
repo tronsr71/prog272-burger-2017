@@ -6,9 +6,14 @@ import '../css/App.css';
 import Logger from '../assets/elf-logger';
 const logger = new Logger('data-loader', 'yellow', 'green', '18px');
 
+import DataLoader from '../assets/DataLoader';
+const dataLoader = new DataLoader();
+
 class Address extends Component {
   constructor(props) {
     //console.log('Address constructor is being called');
+    logger.log('Constructor called');
+
     super(props); // generic call for parent constructor
 
     logger.log('Address Constructor is being called');
@@ -20,19 +25,29 @@ class Address extends Component {
       address: address
     };
     this.quiet = true;
+
+    const that = this;
+
+    dataLoader.loadAddresses(function(addressCount) {
+      if (!addressCount) {
+        throw new Error('Cannot get address count in address.js');
+      }
+      that.addressCount = addressCount;
+    });
   }
 
-  // fetch('./addresses.json').then(function(data) {
-  //   const addresses = data.json();
-  //   console.log(addresses);
-  //   return addresses;
-  // }).then(function (data) {
-  //   console.log(JSON.stringify(data, null, 4));
-  //   that.addresses = data;
-  //   that.setLocalStorage();
-  // }).catch(function (err) {
-  //   logger.log(err);
-  // })
+    // fetch('./addresses.json').then(function(data) {
+    //   const addresses = data.json();
+    //   console.log(addresses);
+    //   return addresses;
+    // }).then(function (data) {
+    //   console.log(JSON.stringify(data, null, 4));
+    //   that.addresses = data;
+    //   that.setLocalStorage();
+    // }).catch(function (err) {
+    //   logger.log(err);
+    // })
+
 
 
   onAddressChange(event) {

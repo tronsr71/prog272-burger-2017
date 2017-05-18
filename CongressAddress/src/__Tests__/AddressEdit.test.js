@@ -14,6 +14,27 @@ describe('AddressEdit Mount Suite', function() {
 
   var quiet = true;
 
+
+  // http://stackoverflow.com/a/32911774/253576
+  beforeEach(function() {
+    const localStorageMock = (function() {
+      let storage = {};
+      return {
+        getItem: function(key) {
+          return storage[key];
+        },
+        setItem: function(key, value) {
+          storage[key] = value.toString();
+        },
+        clear: function() {
+          storage = {};
+        }
+      };
+    })();
+    Object.defineProperty(global, 'localStorage', {value: localStorageMock});
+
+  });
+
   /*
    * @param {object} wrapper - Container for a bunch of HTML nodes
    * @param {string} type - Type of test.

@@ -10,6 +10,8 @@ import ElfDebugEnzyme from '../ElfTestDebug';
 const elfTestDebug = new ElfDebugEnzyme(true);
 const address = addresses[0];
 
+jest.mock('whatwg-fetch');
+
 describe('Address mount Suite', function () {
 
   var quiet = true;
