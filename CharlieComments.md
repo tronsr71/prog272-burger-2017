@@ -102,7 +102,7 @@ git push --set-upstream origin charlie-midterm
 
 I provide a link to the comments, but if you can't find them, just go to your online repository, select the charlie-midterm branch, and look for the file called **CharlieComments.md**.
 
-============
+## Comments Location
 
 My comments are here:
 
