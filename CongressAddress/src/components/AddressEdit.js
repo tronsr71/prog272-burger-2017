@@ -1,21 +1,11 @@
 import React, { Component } from 'react';
 import '../css/App.css';
 
-//import addresses from './AddressList';
-
 class AddressEdit extends Component {
   constructor(props) {
     super(props);
     this.quiet = true;
   }
-
-  // log(message, message2 = '', message3 = '') {
-  //
-  //   if (!this.quiet) {
-  //     const label = this.constructor.name + ': ';
-  //     console.log(label, message, message2, message3);
-  //   }
-  // }
 
   render() {
 

@@ -34,9 +34,9 @@ describe('DataMaven Suite', function() {
     ReactDOM.render(<DataMaven />, div);
   });
 
-  it('renders and displays a Router', () => {
+  it('renders and displays a BrowserRouter', () => {
     const wrapper = shallow(<DataMaven  />);
-    elfDebug.getAll(wrapper);
+    //elfDebug.getAll(wrapper);
     var router = wrapper.find('BrowserRouter');
     //console.log(router);
     expect(router.length).toEqual(1);
@@ -44,9 +44,23 @@ describe('DataMaven Suite', function() {
 
   it('renders and displays at least one Route', () => {
     const wrapper = shallow(<DataMaven  />);
-    elfDebug.getAll(wrapper);
+    //elfDebug.getAll(wrapper);
     var router = wrapper.find('Route');
     expect(router.length).toBeGreaterThan(0);
+  });
+
+  it('renders and displays the ElfHeader', () => {
+    const wrapper = shallow(<DataMaven  />);
+    //elfDebug.getAll(wrapper, false);
+    var router = wrapper.find('ElfHeader');
+    expect(router.length).toEqual(1);
+  });
+
+  it('renders and displays the ElfMenu', () => {
+    const wrapper = shallow(<DataMaven  />);
+    //elfDebug.getAll(wrapper, false);
+    var router = wrapper.find('ElfMenu');
+    expect(router.length).toEqual(1);
   });
 
 });

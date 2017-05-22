@@ -2,9 +2,9 @@
  * Created by bcuser on 5/10/17.
  */
 
-import Logger from '../assets/elf-logger';
+import Logger from './elf-logger';
 const logger = new Logger('data-loader', 'yellow', 'green', '18px');
-import {saveByIndex} from '../assets/elf-local-storage';
+import {saveByIndex} from './elf-local-storage';
 
 export default class DataLoader {
 
@@ -44,7 +44,7 @@ export default class DataLoader {
         //console.log(that);
         that.setLocalStorage(data);
         callback(data.length);
-      }).catch(function (err) {
+      }).catch(function(err) {
         logger.log(err);
       });
     }
