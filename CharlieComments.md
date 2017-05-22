@@ -1,6 +1,6 @@
 ## Runtime
 
-This looks great.
+This looks great. You did good work on the midterm and show that you have a good grasp of the materials we are covering. This is excellent work and you have every reason to feel proud of what you have done.
 
 Your CSS is very nice and your code is professional and of high quality.
 
@@ -55,7 +55,6 @@ Get Address produces good code but I think you manually converted it into **Addr
 
 Here is what I was looking at:
 
-
 ```
 commit bb7bac7d180ab3503378f5f6ae8eb9e926c73067
 Author: jeff at school <tronsr71@yahoo.com>
@@ -84,7 +83,6 @@ Extra Credit
 
 Here is how I created the branch where I place your comments. First I find the commit you want me to grade. Then I:
 
-
 ```bash
 git branch charlie-midterm
 git checkout charlie-midterm
@@ -102,12 +100,14 @@ git commit -m "CharlieComments"
 git push --set-upstream origin charlie-midterm
 ```
 
-I provide a link to the comments, but if you can't find them, just go to your online repository, select the charlie-comment branch, and look for the file called **CharlieComments.md**.
+I provide a link to the comments, but if you can't find them, just go to your online repository, select the charlie-midterm branch, and look for the file called **CharlieComments.md**.
 
 ============
 
 My comments are here:
 
-https://github.com/Ray-Jay/prog272-jones-2017/blob/charlie-midterm/CharlieComments.md
+https://github.com/tronsr71/prog272-burger-2017/blob/charlie-midterm/CharlieComments.md
+
+https://github.com/tronsr71/prog272-burger-2017/tree/charlie-midterm
 
 And also attached, but easier to read through the above link to your repository.
