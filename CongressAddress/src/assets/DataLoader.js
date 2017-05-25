@@ -21,7 +21,7 @@ export default class DataLoader {
   setLocalStorage(addresses) {
     logger.log('SET LOCAL', addresses);
     localStorage.setItem(this.STORE_SET[0], this.STORE_SET[1]);
-    //localStorage.setItem(this.STORE_SET[2], addresses.length);
+    localStorage.setItem(this.STORE_SET[2], addresses.length);
     addresses.forEach(function(address, index) {
       saveByIndex(address, index);
     });
