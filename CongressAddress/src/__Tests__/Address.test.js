@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { mount } from 'enzyme';
 
+import DataMaven from '../components/DataMaven';
 import Address from '../components/Address';
 import addresses from '../components/AddressList';
 import AddressShow from '../components/AddressShow';
@@ -16,6 +17,24 @@ describe('Address mount Suite', function () {
 
   var quiet = true;
 
+    beforeEach(function() {
+        const localStorageMock = (function() {
+            let storage = {};
+            return {
+                getItem: function(key) {
+                    return storage[key];
+                },
+                setItem: function(key, value) {
+                    storage[key] = value.toString();
+                },
+                clear: function() {
+                    storage = {};
+                }
+            };
+        })();
+        Object.defineProperty(global, 'localStorage', {value: localStorageMock});
+
+    });
   /*
    * @param {object} wrapper - Container for a bunch of HTML nodes
    * @param {string} type - Type of test.
@@ -31,7 +50,7 @@ describe('Address mount Suite', function () {
   };
 
   const defaultField = (fieldName, text, index, talkToMe) => {
-    const wrapper = mount(<Address address={address} />);
+    const wrapper = mount(<DataMaven />);
     const label = <label className='AddressLabels'>{fieldName}</label>;
     const expectedText = <span className='AddressShowFields'>{text}</span>;
     debugAtIndex(wrapper, 'default', index, talkToMe);
@@ -39,7 +58,7 @@ describe('Address mount Suite', function () {
   };
 
   const fieldAfterPrevClick = (fieldName, text, index, talkToMe) => {
-    const wrapper = mount(<Address address={address} />);
+    const wrapper = mount(<DataMaven />);
     wrapper.find('button#showPrevAddressClick').simulate('click');
     const label = <label className='AddressLabels'>{fieldName}</label>;
     const expectedText = <span className='AddressShowFields'>{text}</span>;
@@ -48,7 +67,7 @@ describe('Address mount Suite', function () {
   };
 
   const fieldAfterNextClick = (fieldName, text, index, talkToMe) => {
-    const wrapper = mount(<Address address={address} />);
+    const wrapper = mount(<DataMaven />);
     wrapper.find('button#showNextAddressClick').simulate('click');
     const label = <label className='AddressLabels'>{fieldName}</label>;
     const expectedText = <span className='AddressShowFields'>{text}</span>;
@@ -62,7 +81,7 @@ describe('Address mount Suite', function () {
   // --------------------------------------------------------
   it('renders our Address component without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<Address />, div);
+    ReactDOM.render(<DataMaven />, div);
   });
 
   // Begin tests with DEFAULT FIELD VALUES
