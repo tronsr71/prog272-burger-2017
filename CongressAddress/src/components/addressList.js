@@ -11,7 +11,6 @@ const addresses = [
     website: unknown,
     email: unknown,
     contact: unknown
-
   },
   {
     firstName: 'Patty',
@@ -24,7 +23,6 @@ const addresses = [
     website: 'www.murray.senate.gov',
     email: 'pmurray@gmail.com',
     contact: 'http://some-office.gov'
-
   },
   {
     firstName: 'Lamar',

@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { shallow } from 'enzyme';
 
-import addresses from '../components/AddressList';
+import addresses from '../components/addressList';
 import AddressEdit from '../components/AddressEdit';
 import AddressChanger from '../components/AddressChanger';
 import ElfDebugEnzyme from '../ElfTestDebug';

@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
 import '../css/App.css';
 
 class App extends Component {
-  constructor() {
-    super(); // generic call for parent constructor
+  constructor(props) {
+    super(props);
     this.getNine = this.getNine.bind(this);
 
     this.state = {
       nine: '0'
     };
-
   }
 
   getNine() {
@@ -18,20 +18,26 @@ class App extends Component {
 
   render() {
     return (
-      <div id='smallNumbers' className='App'>
-        <div className='ContentBG'>
+      <form className='navbar-form' action=''>
+        <div id='smallNumbers' className='row'>
+          <div className='ContentBG'>
 
-          <div className='Content'>
-            <label id='numbersLabel'>Num: </label>
-            <span id='numbersText'>{this.state.nine}</span>
+            <div className='Content'>
+              <label id='numbersLabel'>Num: </label>
+              <span id='numbersText'>{this.state.nine}</span>
+            </div>
+
+            <div className='FooterButtonsContainer'>
+              <Button
+                bsStyle='primary'
+                id='btnSmallNumbers' className='FooterButtons'
+                onClick={this.getNine}>Get Nine
+              </Button>
+            </div>
+
           </div>
-
-          <div className='FooterButtonsContainer'>
-            <button id='btnSmallNumbers' className='FooterButtons' onClick={this.getNine}>Get Nine</button>
-          </div>
-
         </div>
-      </div>
+      </form>
     );
   }
 }

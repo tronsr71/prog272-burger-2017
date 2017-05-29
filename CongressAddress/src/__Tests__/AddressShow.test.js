@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 
-import addresses from '../components/AddressList';
+import addresses from '../components/addressList';
 import AddressShow from '../components/AddressShow';
 import ElfDebugEnzyme from '../ElfTestDebug';
 

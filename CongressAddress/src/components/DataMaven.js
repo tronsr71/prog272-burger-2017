@@ -1,22 +1,22 @@
 import React, {Component} from 'react';
-
 import {
   BrowserRouter as Router,
   Route,
-  Link
 } from 'react-router-dom';
-import Address from '../components/Address';
-import AddressEdit from '../components/AddressEdit';
-import SmallNumbers from '../components/SmallNumbers';
-import ElfHeader from '../components/ElfHeader';
-import ElfMenu from '../components/ElfMenu';
-import AddressChanger from './AddressChanger';
-import addresses from './AddressList';
+
+import ElfHeader from './ElfHeader';
+import ElfMenu from './ElfMenu';
+import AddressShow from './AddressShow';
+import AddressEdit from './AddressEdit';
+import SmallNumbers from './SmallNumbers';
+
+import {saveByIndex} from '../assets/elf-local-storage';
+import addresses from './addressList';
+
 import Logger from '../assets/elf-logger';
 const logger = new Logger('data-loader', 'yellow', 'green', '18px');
 import DataLoader from '../assets/DataLoader';
 const dataLoader = new DataLoader();
-
 
 class DataMaven extends Component {
 
@@ -41,9 +41,7 @@ class DataMaven extends Component {
       that.addressCount = addressCount;
     });
 
-
   }
-
 
   onAddressChange(event) {
 
@@ -79,22 +77,25 @@ class DataMaven extends Component {
     switch (event.target.id) {
       case 'inputFirstName':
         address.firstName = event.target.value;
-        //saveByIndex(address, this.addressIndex);
         break;
       case 'inputLastName':
         address.lastName = event.target.value;
         break;
       case 'inputStreet':
         address.street = event.target.value;
+        saveByIndex(address, this.addressIndex);
         break;
       case 'inputCity':
         address.city = event.target.value;
+        saveByIndex(address, this.addressIndex);
         break;
       case 'inputState':
         address.state = event.target.value;
+        saveByIndex(address, this.addressIndex);
         break;
       case 'inputZip':
         address.zip = event.target.value;
+        saveByIndex(address, this.addressIndex);
         break;
       case 'inputPhone':
         address.phone = event.target.value;
@@ -113,12 +114,12 @@ class DataMaven extends Component {
         throw new Error('OH NO! BAD CASE in Address onNameChange');
     }
 
+    saveByIndex(address, this.addressIndex);
+
     this.setState({
       address: address
     });
   };
-
-
 
   render() {
     return (
@@ -129,7 +130,7 @@ class DataMaven extends Component {
         <ElfMenu/>
 
         <Route exact path='/' render={(props) => (
-          <Address {...props}
+          <AddressShow {...props}
                        address={this.state.address}
                        onAddressChange={this.onAddressChange}
           />

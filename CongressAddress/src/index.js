@@ -4,7 +4,7 @@ import DataMaven from './components/DataMaven';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
-
+import './css/App.css';
 
 ReactDOM.render(
   <div>

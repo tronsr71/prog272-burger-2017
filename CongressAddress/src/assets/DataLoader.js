@@ -5,6 +5,7 @@
 import Logger from './elf-logger';
 const logger = new Logger('data-loader', 'yellow', 'green', '18px');
 import {saveByIndex} from './elf-local-storage';
+//import {getByIndex} from './elf-local-storage';
 
 export default class DataLoader {
 

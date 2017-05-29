@@ -7,7 +7,7 @@
 
 .App {
   margin: 5px;
-  border: 1px solid black;
+  border: 20px solid black;
 }
 
 .App-logo {
@@ -20,6 +20,13 @@
   to { transform: rotate(360deg); }
 }
 
+
+Jumbotron {
+  border: 5px solid red;
+  margin: 0;
+  padding: 0;
+}
+
 .App-header {
   background-color: black;
   min-height: 200px;
@@ -28,7 +35,7 @@
   color: white;
 }
 
-h1 {
+h2 {
   margin-top: 20px;
 }
 
@@ -58,20 +65,21 @@ h1 {
 
 .Content {
   display: inline-block;
-  Width: 624px;
-  Height: 240px;
+  Width: 500px;
+  min-height: 240px;
   margin: 10px;
   border: 1px solid white;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.5);
   padding-top: 15px;
+  padding-bottom: 10px;
   text-align: left;
 }
 
 .AddressLabels {
   display: inline-block;
   margin-right: 5px;
-  width: 180px;
+  width: 120px;
   height: 22px;
   /*border: 1px solid red;*/
   text-align: right;
@@ -87,7 +95,7 @@ h1 {
 }
 
 #addressShowRender {
-  /*border: 1px solid black;*/
+  /*border: 5px solid blue;*/
   text-align: center;
 }
 
@@ -96,7 +104,7 @@ h1 {
 }
 
 #addressEditRender {
-  /*border: 1px solid yellow;*/
+  /*border: 5px solid blue;*/
   text-align: center;
 }
 

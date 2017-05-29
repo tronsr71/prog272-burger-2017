@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
 import '../css/App.css';
 
 class AddressShow extends Component {
@@ -20,39 +21,48 @@ class AddressShow extends Component {
     this.log('RENDER');
 
     return (
-      <div id='addressShowRender'>
-        <div className='ContentBG'>
-          <div className='Content'>
-            <label className='AddressLabels'>First Name: </label>
-            <span className='AddressShowFields'>{this.props.address.firstName}</span><br />
-            <label className='AddressLabels'>Last Name: </label>
-            <span className='AddressShowFields'>{this.props.address.lastName}</span><br />
-            <label className='AddressLabels'>Street: </label>
-            <span className='AddressShowFields'>{this.props.address.street}</span><br />
-            <label className='AddressLabels'>City: </label>
-            <span className='AddressShowFields'>{this.props.address.city}</span><br />
-            <label className='AddressLabels'>State: </label>
-            <span className='AddressShowFields'>{this.props.address.state}</span><br />
-            <label className='AddressLabels'>Zip Code: </label>
-            <span className='AddressShowFields'>{this.props.address.zip}</span><br />
-            <label className='AddressLabels'>Phone: </label>
-            <span className='AddressShowFields'>{this.props.address.phone}</span><br />
-            <label className='AddressLabels'>Website: </label>
-            <span className='AddressShowFields'>{this.props.address.website}</span><br />
-            <label className='AddressLabels'>Email: </label>
-            <span className='AddressShowFields'>{this.props.address.email}</span><br />
-            <label className='AddressLabels'>Contact: </label>
-            <span className='AddressShowFields'>{this.props.address.contact}</span><br />
-          </div>
+      <form className='navbar-form' action=''>
+        <div id='addressShowRender' className='row'>
+          <div className='ContentBG'>
+            <div className='Content'>
+              <label className='AddressLabels'>First Name: </label>
+              <span className='AddressShowFields'>{this.props.address.firstName}</span><br />
+              <label className='AddressLabels'>Last Name: </label>
+              <span className='AddressShowFields'>{this.props.address.lastName}</span><br />
+              <label className='AddressLabels'>Street: </label>
+              <span className='AddressShowFields'>{this.props.address.street}</span><br />
+              <label className='AddressLabels'>City: </label>
+              <span className='AddressShowFields'>{this.props.address.city}</span><br />
+              <label className='AddressLabels'>State: </label>
+              <span className='AddressShowFields'>{this.props.address.state}</span><br />
+              <label className='AddressLabels'>Zip Code: </label>
+              <span className='AddressShowFields'>{this.props.address.zip}</span><br />
+              <label className='AddressLabels'>Phone: </label>
+              <span className='AddressShowFields'>{this.props.address.phone}</span><br />
+              <label className='AddressLabels'>Website: </label>
+              <span className='AddressShowFields'>{this.props.address.website}</span><br />
+              <label className='AddressLabels'>Email: </label>
+              <span className='AddressShowFields'>{this.props.address.email}</span><br />
+              <label className='AddressLabels'>Contact: </label>
+              <span className='AddressShowFields'>{this.props.address.contact}</span><br />
+            </div>
 
-          <div className='FooterButtonsContainer'>
-            <button id='showPrevAddressClick' className='FooterButtons'
-                    onClick={this.props.onAddressChange}>Get Prev Address</button>
-            <button id='showNextAddressClick'  className='FooterButtons'
-                    onClick={this.props.onAddressChange}>Get Next Address</button>
+            <div className='FooterButtonsContainer'>
+              <Button
+                bsStyle='primary'
+                id='showPrevAddressClick' className='FooterButtons'
+                onClick={this.props.onAddressChange}>Get Prev Address
+              </Button>
+
+              <Button
+                bsStyle='primary'
+                id='showNextAddressClick' className='FooterButtons'
+                onClick={this.props.onAddressChange}>Get Next Address
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
+      </form>
     );
   }
 
