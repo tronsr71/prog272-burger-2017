@@ -1,7 +1,7 @@
 /**
  * Created by bcuser on 5/10/17.
  */
-
+//import 'whatwg-fetch';
 import Logger from './elf-logger';
 const logger = new Logger('data-loader', 'yellow', 'green', '18px');
 import {saveByIndex} from './elf-local-storage';
@@ -36,7 +36,9 @@ export default class DataLoader {
       callback(localStorage.getItem(this.STORE_SET[2]));
     } else {
       logger.log('Loading data');
+      console.log('just before fetch command');
       fetch('./address-list.json').then(function(data) {
+        console.log('just after fetch command');
         const addresses = data.json();
         console.log(addresses);
         return addresses;

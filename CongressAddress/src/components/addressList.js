@@ -1,8 +1,8 @@
 const unknown = 'unknown';
 const addresses = [
   {
-    firstName: unknown,
-    lastName: unknown,
+    firstName: 'javascriptUnknown',
+    lastName: 'javascriptUnknown',
     street: unknown,
     city: unknown,
     state: unknown,

@@ -10,8 +10,8 @@ import AddressShow from './AddressShow';
 import AddressEdit from './AddressEdit';
 import SmallNumbers from './SmallNumbers';
 
-import {saveByIndex} from '../assets/elf-local-storage';
-import addresses from './addressList';
+import { getByIndex } from '../assets/elf-local-storage';
+import { saveByIndex } from '../assets/elf-local-storage';
 
 import Logger from '../assets/elf-logger';
 const logger = new Logger('data-loader', 'yellow', 'green', '18px');
@@ -23,15 +23,10 @@ class DataMaven extends Component {
   constructor(props) {
     super(props);
 
-    logger.log('Address Constructor is being called');
+    logger.log('DataMaven Constructor is being called');
     this.onAddressChange = this.onAddressChange.bind(this);
     this.onNameChange = this.onNameChange.bind(this);
     this.addressIndex = 0;
-    var address = addresses[this.addressIndex];
-    this.state = {
-      address: address
-    };
-    this.quiet = true;
 
     const that = this;
     dataLoader.loadAddresses(function(addressCount) {
@@ -41,13 +36,17 @@ class DataMaven extends Component {
       that.addressCount = addressCount;
     });
 
-  }
+    const address = getByIndex(this.addressIndex);
+    this.state = {
+      address: address
+    };
+  } // End DataMaven Constructor
 
   onAddressChange(event) {
 
     // we increment our adddress index here
     if (event.target.id.includes('Next')) {
-      if (this.addressIndex !== addresses.length - 1) {
+      if (this.addressIndex !== this.addressCount - 1) {
         this.addressIndex += 1;
       } else { // we do this to go from end to beginning
         this.addressIndex = 0;
@@ -59,21 +58,24 @@ class DataMaven extends Component {
       if (this.addressIndex !== 0) {
         this.addressIndex -= 1;
       } else { // we do this to go from beginning to end
-        this.addressIndex = addresses.length - 1;
+        this.addressIndex = this.addressCount - 1;
       }
     }
 
     //console.log('address index: ' + this.addressIndex);
-    const address = addresses[this.addressIndex];
+    const address = getByIndex(this.addressIndex);
 
     this.setState({
       address: address
     });
+
+    //needed if using <button> inside a <form>
+    //event.preventDefault();
   };
 
   onNameChange(event) {
     console.log('from onNameChange: index: ' + this.addressIndex);
-    const address = addresses[this.addressIndex];
+    const address = getByIndex(this.addressIndex);
     switch (event.target.id) {
       case 'inputFirstName':
         address.firstName = event.target.value;
@@ -124,31 +126,30 @@ class DataMaven extends Component {
   render() {
     return (
 
-    <Router>
-      <div>
-        <ElfHeader />
-        <ElfMenu/>
+      <Router>
+        <div>
+          <ElfHeader />
+          <ElfMenu/>
 
-        <Route exact path='/' render={(props) => (
-          <AddressShow {...props}
-                       address={this.state.address}
-                       onAddressChange={this.onAddressChange}
-          />
-        )}/>
-        <Route path='/edit' render={(props) => (
-          <AddressEdit {...props}
-                       address={this.state.address}
-                       onAddressChange={this.onAddressChange}
-                       onNameChange={this.onNameChange}
-          />
-        )}/>
-        <Route path='/small' component={SmallNumbers}/>
+          <Route exact path='/' render={(props) => (
+            <AddressShow {...props}
+                         address={this.state.address}
+                         onAddressChange={this.onAddressChange}
+            />
+          )}/>
+          <Route path='/edit' render={(props) => (
+            <AddressEdit {...props}
+                         address={this.state.address}
+                         onAddressChange={this.onAddressChange}
+                         onNameChange={this.onNameChange}
+            />
+          )}/>
+          <Route path='/small' component={SmallNumbers}/>
 
-      </div>
+        </div>
+      </Router>
 
-    </Router>
-
-  );
+    );
   }
 }
 
