@@ -1,10 +1,8 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import { shallow } from 'enzyme';
 
 import addresses from '../components/addressList';
 import AddressEdit from '../components/AddressEdit';
-import AddressChanger from '../components/AddressChanger';
 import ElfDebugEnzyme from '../ElfTestDebug';
 
 const elfTestDebug = new ElfDebugEnzyme(true);
@@ -13,7 +11,6 @@ const address = addresses[0];
 describe('AddressEdit Mount Suite', function() {
 
   var quiet = true;
-
 
   // http://stackoverflow.com/a/32911774/253576
   beforeEach(function() {
