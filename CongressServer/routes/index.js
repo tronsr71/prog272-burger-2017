@@ -41,20 +41,18 @@ router.get('/insertValidCollection', function(request, response) {
   allMongo.readDataAndInsert(response);
 });
 
-/*
-router.get('/bar', function(request, response) {
-  response.status(200).send({result: 'bar'});
-});
-
-router.get('/bar/:id', function(request, response) {
-  'use strict';
-  response.status(200).send({param: request.params.id});
-});
+// router.get('/bar', function(request, response) {
+//   response.status(200).send({result: 'bar'});
+// });
+//
+// router.get('/bar/:id', function(request, response) {
+//   'use strict';
+//   response.status(200).send({param: request.params.id});
+// });
 
 router.get('/:id', function(request, response) {
   'use strict';
   response.status(200).send({ result: request.params.id });
 });
-*/
 
 module.exports = router;
