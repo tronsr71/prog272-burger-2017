@@ -2,8 +2,8 @@ $(document).ready(function() { 'use strict';
   var insertUrl = '/insertValidCollection';
 
   function insertCollection() {
-    $.get(insertUrl, function(result) {
-      $('#display').html(JSON.stringify(result));
+    var jqxhr = $.get(insertUrl, function(result) {
+      alert( "success" );
       console.log(JSON.stringify(result, null, 4));
     })
       .done(function() {
@@ -19,9 +19,59 @@ $(document).ready(function() { 'use strict';
 
   $('#insertValidData').click(insertCollection);
 
-  $("#getAll").click(function() {
+  function getAll() {
     $.getJSON('/all-data', function(result) {
+      collection = result.allData;
       $('#display').html(JSON.stringify(result, null, 4));
     })
-  });
+      .done(function() {
+        console.log('second success');
+      })
+      .fail(function(error) {
+        alert(JSON.stringify(error.responseJSON, null, 4));
+      })
+      .always(function() {
+        console.log('finished');
+      });
+  }
+
 });
+
+
+
+
+
+// $(document).ready(function() { 'use strict';
+//   var insertUrl = '/insertValidCollection';
+//
+//   function insertCollection() {
+//     var jqxhr = $.get(insertUrl, function(result) {
+//       alert( "success" );
+//       console.log(JSON.stringify(result, null, 4));
+//     })
+//       .done(function() {
+//         console.log( "second success" );
+//       })
+//       .fail(function() {
+//         alert( "error" );
+//       })
+//       .always(function() {
+//         console.log( "finished" );
+//       });
+//   }
+//
+//   $('#insertValidData').click(insertCollection);
+//
+//   $("#getAll").click(function() {
+//     $.getJSON('/all-data', function(result) {
+//       router.get('/bar', function(request, response) {
+//         response.status(200).send({result: 'bar'});
+//       });
+//       $('#display').html(JSON.stringify(result, null, 4));
+//       router.get('/bar', function(request, response) {
+//         response.status(200).send({result: 'bar'});
+//       });
+//     });
+//   });
+// });
+//
