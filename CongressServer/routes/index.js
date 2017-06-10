@@ -12,6 +12,10 @@ var connect = require('./connect');
 router.get('/', function(req, res, next) {
   'use strict';
   res.render('index', {title: 'CongressServer'});
+
+  // use this after doing 'npm run build'
+  //res.loadFile('index.html);
+
 });
 
 function checkConnection() {
@@ -30,6 +34,7 @@ router.get('/all-data', function(request, response) {
 router.get('/emptyCollection', function(request, response) {
   'use strict';
   checkConnection();
+  //response.status(200).send({result: 'empty'});
   allMongo.empty(response);
 });
 

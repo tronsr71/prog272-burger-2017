@@ -109,6 +109,7 @@ allMongo.empty = function(response) {
   });
 };
 
+
 allMongo.update = function(requestQuery, response) {
   console.log('All Mongo', requestQuery._id);
   Politicians.findOne({

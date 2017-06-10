@@ -42,6 +42,13 @@ class DataMaven extends Component {
     };
   } // End DataMaven Constructor
 
+
+  componentDidMount(event) {
+    logger.log('DID LOG');
+
+
+  }
+
   onAddressChange(event) {
 
     // we increment our adddress index here

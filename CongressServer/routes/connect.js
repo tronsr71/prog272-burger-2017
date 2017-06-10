@@ -45,6 +45,7 @@ const connect = {
 
   // mongodb://dumbuser:foobar@ds133378.mlab.com:33378/prog272-burger-db03
   // mongodb://<dbuser>:<dbpassword>@ds049848.mlab.com:49848/elvenlab01
+
   mlabConnect: function() {
     'use strict';
     console.log('Connecting with mlab.');
