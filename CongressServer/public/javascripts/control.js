@@ -52,7 +52,11 @@ $(document).ready(function() { 'use strict';
 
   function update() {
     collection[0].firstName = 'foo';
-    $.getJSON('/update', collection[0], function(result) {
+    const newData = {
+      id: collection[0]._id,
+      firstName: collection[0].firstName
+    };
+    $.getJSON('/update', newData, function(result) {
       $('#display').html(JSON.stringify(result, null, 4));
     })
       .done(function() {
