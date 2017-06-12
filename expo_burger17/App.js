@@ -9,8 +9,9 @@ export default class App extends React.Component {
         <Text style={styles.welcome}>
           Welcome to Expo Burger!
         </Text>
-        <Text>PUT THE ADDRESS COMPONENT JUST BELOW HERE.</Text>
+
         <Address/>
+
       </View>
     );
   }
