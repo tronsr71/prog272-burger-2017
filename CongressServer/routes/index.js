@@ -26,7 +26,7 @@ function checkConnection() {
 
 router.get('/all-data', function(request, response) {
   'use strict';
-  console.log('AllData route invoked.');
+  console.log('All Data route invoked.');
   checkConnection();
   allMongo.getAllData(response);
 });
