@@ -20,6 +20,7 @@ router.get('/', function(req, res, next) {
 
 function checkConnection() {
   if (!connect.connected) {
+    //connect.doConnection('custom');
     connect.doConnection('mlab');
   }
 }

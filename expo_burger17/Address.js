@@ -34,7 +34,8 @@ export default class Address extends Component {
     this.setState({foo:'Beginning Empty...'});
     const that = this;
     //const ip = '168.156.47.60';
-    const ip = '10.10.10.201';
+    //const ip = '10.10.10.201';
+    const ip = '10.11.3.104';
     fetch('http://' + ip + ':30025/emptyCollection')
       .then((response) => response.json())
       .then(function(result) {
@@ -61,7 +62,8 @@ export default class Address extends Component {
     this.setState({foo:'Beginning Insert...'});
     const that = this;
     //const ip = '168.156.47.60';
-    const ip = '10.10.10.201';
+    //const ip = '10.10.10.201';
+    const ip = '10.11.3.104';
     fetch('http://' + ip + ':30025/insertValidCollection')
       .then((response) => response.json())
       .then(function(result) {
@@ -88,7 +90,8 @@ export default class Address extends Component {
     this.setState({foo:'gone Fetchin...'});
     const that = this;
     //const ip = '168.156.47.60';
-    const ip = '10.10.10.201';
+    //const ip = '10.10.10.201';
+    const ip = '10.11.3.104';
     fetch('http://' + ip + ':30025/all-data')
       .then((response) => response.json())
       .then(function(result) {

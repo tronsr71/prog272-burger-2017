@@ -31,7 +31,8 @@ const connect = {
     const password = 'foobar';
     const siteAndPort = '192.168.2.18:27017';
     const databaseName = 'test';
-    const url = 'mongodb://' + userName + ':' + password + '@' + siteAndPort + '/' + databaseName;
+    //const url = 'mongodb://' + userName + ':' + password + '@' + siteAndPort + '/' + databaseName;
+    const url = 'mongodb://' + '@' + siteAndPort + '/' + databaseName;
     console.log(url);
     connect.connected = true;
     mongoose.connect(url);
