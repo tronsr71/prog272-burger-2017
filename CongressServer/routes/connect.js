@@ -25,11 +25,12 @@ const connect = {
 
   custom: function() {
     'use strict';
-    console.log('Connecting with simple.');
+    console.log('Connecting with custom.');
     //const url = 'mongodb://127.0.0.1:27017/test';
     const userName = 'charlie';
     const password = 'foobar';
-    const siteAndPort = '192.168.2.18:27017';
+    //const siteAndPort = '192.168.2.18:27017';
+    const siteAndPort = '10.10.10.253:27017';
     const databaseName = 'test';
     //const url = 'mongodb://' + userName + ':' + password + '@' + siteAndPort + '/' + databaseName;
     const url = 'mongodb://' + '@' + siteAndPort + '/' + databaseName;
@@ -44,9 +45,6 @@ const connect = {
     });
   },
 
-  // mongodb://dumbuser:foobar@ds133378.mlab.com:33378/prog272-burger-db03
-  // mongodb://<dbuser>:<dbpassword>@ds049848.mlab.com:49848/elvenlab01
-
   mlabConnect: function() {
     'use strict';
     console.log('Connecting with mlab.');
@@ -59,7 +57,7 @@ const connect = {
 
     mongoose.connect(url);
 
-    // This part is optional
+    //This part is optional
     var db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error:'));
     db.once('open', function(callback) {

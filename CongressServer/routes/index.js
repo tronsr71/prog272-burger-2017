@@ -1,12 +1,8 @@
 var express = require('express');
 var router = express.Router();
-//var politicians = require('../models/politicians');
 var allMongo = require('./all-mongo');
 var connect = require('./connect');
-// var connrouter.get('/bar', function(request, response) {
-//   response.status(200).send({result: 'bar'});
-// });
-// ect = require('./connect');
+//var politicians = require('../models/politicians');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -18,43 +14,52 @@ router.get('/', function(req, res, next) {
 
 });
 
-function checkConnection() {
+
+function checkConnection(response, callback) {
   if (!connect.connected) {
-    //connect.doConnection('custom');
-    connect.doConnection('mlab');
+    connect.doConnection('mlab', (err) => {
+      if (err) {
+        response.status(500).send({error: err});
+        callback(false);
+        return;
+      }
+    });
   }
+  callback(true);
 }
 
 router.get('/all-data', function(request, response) {
   'use strict';
-  console.log('All Data route invoked.');
-  checkConnection();
-  allMongo.getAllData(response);
+  console.log('AllData route invoked.');
+  checkConnection(response, (result) => {
+    if (result) {
+      console.log('Calling allMongo.getAllData');
+      allMongo.getAllData(response);
+    }
+  });
 });
 
 router.get('/emptyCollection', function(request, response) {
   'use strict';
-  checkConnection();
-  //response.status(200).send({result: 'empty'});
-  allMongo.empty(response);
+  checkConnection(response, (result) => {
+    if (result) {
+      console.log('Calling allMongo.empty');
+      allMongo.empty(response);
+    }
+  });
 });
 
 router.get('/insertValidCollection', function(request, response) {
   'use strict';
   console.log('Insert Valid Collection Called.');
   //response.status(200).send({result: 'Insert valid Collection'});
-  checkConnection();
-  allMongo.readDataAndInsert(response);
+  checkConnection(response, (result) => {
+    if (result) {
+      console.log('Calling allMongo.readDataAndInsert');
+      allMongo.readDataAndInsert(response);
+    }
+  });
 });
-
-// router.get('/bar', function(request, response) {
-//   response.status(200).send({result: 'bar'});
-// });
-//
-// router.get('/bar/:id', function(request, response) {
-//   'use strict';
-//   response.status(200).send({param: request.params.id});
-// });
 
 router.get('/:id', function(request, response) {
   'use strict';

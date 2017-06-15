@@ -17,7 +17,7 @@ export default class Address extends Component {
     super(props);
     this.state = {
       foo: 'expo try state',
-      firstName: 'default fN',
+      firstName: 'default BB',
       lastName: 'default last'
     };
     this.index = 0;
@@ -33,9 +33,9 @@ export default class Address extends Component {
   removeAddressData(event) {
     this.setState({foo:'Beginning Empty...'});
     const that = this;
-    //const ip = '168.156.47.60';
-    //const ip = '10.10.10.201';
-    const ip = '10.11.3.104';
+    //const ip = '168.156.47.60'; //Charlie's Box
+    //const ip = '10.11.3.104';   //BC EDUROAM Wireless
+    const ip = '10.10.10.201';    //Jeff Home
     fetch('http://' + ip + ':30025/emptyCollection')
       .then((response) => response.json())
       .then(function(result) {
@@ -61,9 +61,9 @@ export default class Address extends Component {
   insertAddressData(event) {
     this.setState({foo:'Beginning Insert...'});
     const that = this;
-    //const ip = '168.156.47.60';
-    //const ip = '10.10.10.201';
-    const ip = '10.11.3.104';
+    //const ip = '168.156.47.60'; //Charlie's Box
+    //const ip = '10.11.3.104';   //BC EDUROAM Wireless
+    const ip = '10.10.10.201';    //Jeff Home
     fetch('http://' + ip + ':30025/insertValidCollection')
       .then((response) => response.json())
       .then(function(result) {
@@ -89,9 +89,9 @@ export default class Address extends Component {
   fetchAddress(event) {
     this.setState({foo:'gone Fetchin...'});
     const that = this;
-    //const ip = '168.156.47.60';
-    //const ip = '10.10.10.201';
-    const ip = '10.11.3.104';
+    //const ip = '168.156.47.60'; //Charlie's Box
+    //const ip = '10.11.3.104';   //BC EDUROAM Wireless
+    const ip = '10.10.10.201';    //Jeff Home
     fetch('http://' + ip + ':30025/all-data')
       .then((response) => response.json())
       .then(function(result) {

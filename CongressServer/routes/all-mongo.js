@@ -1,8 +1,9 @@
 /**
  * Created by charlie on 6/5/16.
+ * Adapted for politicians on 5/20/17
+ * Updated 6/12 2017
  */
-//const express = require('express');
-const connect = require('./connect');
+
 const Politicians = require('../models/politicians');
 const fs = require('fs');
 let totalPoliticiansSaved = 0;
@@ -15,9 +16,6 @@ allMongo.numberOfPoliticians = 0;
 
 function insertPolitician(politician, response) {
   'use strict';
-  if (!connect.connected) {
-    connect.doConnection();
-  }
   const newPolitician = new Politicians({
     'firstName': politician.firstName,
     'lastName': politician.lastName,
@@ -73,7 +71,7 @@ allMongo.writeData = function(fileName, data) {
     if (err) {
       throw (err);
     }
-    console.log('success writing file');
+    console.log('success writing file: ', fileName);
   });
 };
 
@@ -81,7 +79,6 @@ allMongo.readDataAndInsert = function(response) {
   'use strict';
   fs.readFile('public/address-list.json', function(err, politiciansText) {
     if (err) {
-      //throw (err);
       response.status(404).send({'result': err});
       return;
     }
@@ -109,11 +106,10 @@ allMongo.empty = function(response) {
   });
 };
 
-
 allMongo.update = function(requestQuery, response) {
   console.log('All Mongo', requestQuery._id);
   Politicians.findOne({
-    _id: requestQuery._id
+    _id: requestQuery.id
   }, function(err, doc) {
     console.log('findone', err, doc);
     if (err) {

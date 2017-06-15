@@ -4,11 +4,11 @@ $(document).ready(function() { 'use strict';
 
   function insertCollection() {
     var jqxhr = $.get(insertUrl, function(result) {
-      alert( "success" );
+      alert( "insert successful" );
       console.log(JSON.stringify(result, null, 4));
     })
       .done(function() {
-        console.log( "second success" );
+        console.log( "insertCollection success" );
       })
       .fail(function() {
         alert( "error" );
@@ -25,7 +25,7 @@ $(document).ready(function() { 'use strict';
       $('#display').html(JSON.stringify(result, null, 4));
     })
       .done(function() {
-        console.log('second success');
+        console.log('getAll success');
       })
       .fail(function(error) {
         alert(JSON.stringify(error.responseJSON, null, 4));
@@ -40,7 +40,7 @@ $(document).ready(function() { 'use strict';
       $('#display').html(JSON.stringify(result, null, 4));
     })
       .done(function() {
-        console.log('second success');
+        console.log('emptyCollection success');
       })
       .fail(function() {
         alert(JSON.stringify(a.responseJSON, null, 4));
@@ -51,23 +51,29 @@ $(document).ready(function() { 'use strict';
   }
 
   function update() {
-    collection[0].firstName = 'foo';
-    const newData = {
-      id: collection[0]._id,
-      firstName: collection[0].firstName
-    };
-    $.getJSON('/update', newData, function(result) {
-      $('#display').html(JSON.stringify(result, null, 4));
-    })
-      .done(function() {
-        console.log('second success');
+    console.log(collection);
+    if (collection !== undefined && collection.length !== 0) {
+      collection[0].firstName = 'foo';
+      const newData = {
+        id: collection[0]._id,
+        firstName: collection[0].firstName
+      };
+      $.getJSON('/update', newData, function(result) {
+        $('#display').html(JSON.stringify(result, null, 4));
       })
-      .fail(function() {
-        alert(JSON.stringify(a.responseJSON, null, 4));
-      })
-      .always(function() {
-        console.log('finished');
-      });
+        .done(function() {
+          console.log('update success');
+        })
+        .fail(function() {
+          alert(JSON.stringify(a.responseJSON, null, 4));
+        })
+        .always(function() {
+          console.log('finished');
+        });
+    }
+    else {
+      console.log('Collection is empty, cannot update');
+    }
   }
 
 
