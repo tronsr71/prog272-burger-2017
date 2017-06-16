@@ -89,6 +89,8 @@ export default class DataLoader {
     addresses.forEach(function(address, index) {
       saveByIndex(address, index);
     });
+
+    //else
     return addresses;
   }
 
@@ -102,7 +104,12 @@ export default class DataLoader {
       fetch('./all-data')
         .then((data) => data.json())
         .then((data) => {
+          // XTRA (Remove Later)
+          console.log('about to log data...')
+          console.log(data);
           if (data.error) {
+            // XTRA (Remove Later)
+            console.log('inside if data.error...')
             alert(JSON.stringify(data.error, null, 4));
             callback(0);
             return;
@@ -112,8 +119,12 @@ export default class DataLoader {
           callback(data.allData.length);
         }).catch(function(err) {
         if (err.message) {
+          // XTRA (Remove Later)
+          console.log('inside err.message...')
           alert(JSON.stringify(err.message, null, 4));
         } else {
+          // XTRA (Remove Later)
+          console.log('inside very last else...')
           alert('error' + err);
         }
         logger.log(err);

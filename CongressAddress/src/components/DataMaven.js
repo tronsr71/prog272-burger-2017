@@ -26,7 +26,9 @@ class DataMaven extends Component {
     logger.log('DataMaven Constructor is being called');
     this.onAddressChange = this.onAddressChange.bind(this);
     this.onNameChange = this.onNameChange.bind(this);
+    this.onRefreshData = this.onRefreshData.bind(this);
     this.addressIndex = 0;
+    this.addressCount = 0;
 
     const that = this;
     dataLoader.loadAddresses(function(addressCount) {
@@ -43,10 +45,24 @@ class DataMaven extends Component {
   } // End DataMaven Constructor
 
 
-  componentDidMount(event) {
-    logger.log('DID LOG');
+  componentDidMount() {
+    logger.log('DID MOUNT');
+    this.loadFromDatabase();
+  }
 
-
+  loadFromDatabase() {
+    const that = this;
+    dataLoader.loadAddresses(function(addressCount) {
+      if (!addressCount) {
+        throw new Error('Cannot get address count in address.js');
+      }
+      that.addressCount = addressCount;
+      logger.log('LOADED ADDRESS');
+      const address = getByIndex(that.addressIndex);
+      that.setState({
+        address: address
+      });
+    });
   }
 
   onAddressChange(event) {
@@ -92,19 +108,19 @@ class DataMaven extends Component {
         break;
       case 'inputStreet':
         address.street = event.target.value;
-        saveByIndex(address, this.addressIndex);
+        //saveByIndex(address, this.addressIndex);
         break;
       case 'inputCity':
         address.city = event.target.value;
-        saveByIndex(address, this.addressIndex);
+        //saveByIndex(address, this.addressIndex);
         break;
       case 'inputState':
         address.state = event.target.value;
-        saveByIndex(address, this.addressIndex);
+        //saveByIndex(address, this.addressIndex);
         break;
       case 'inputZip':
         address.zip = event.target.value;
-        saveByIndex(address, this.addressIndex);
+        //saveByIndex(address, this.addressIndex);
         break;
       case 'inputPhone':
         address.phone = event.target.value;
@@ -130,6 +146,18 @@ class DataMaven extends Component {
     });
   };
 
+  onRefreshData(event) {
+    dataLoader.clear();
+    dataLoader.loadAddresses();
+
+    this.addressIndex = 0;
+    // const address = getByIndex(this.addressIndex);
+    //
+    // this.setState({
+    //   address: address
+    // });
+  };
+
   render() {
     return (
 
@@ -142,6 +170,7 @@ class DataMaven extends Component {
             <AddressShow {...props}
                          address={this.state.address}
                          onAddressChange={this.onAddressChange}
+                         onRefreshData={this.onRefreshData}
             />
           )}/>
           <Route path='/edit' render={(props) => (

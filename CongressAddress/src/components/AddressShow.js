@@ -18,7 +18,7 @@ class AddressShow extends Component {
   }
 
   render() {
-    this.log('RENDER');
+    this.log('RENDER AddressShow');
 
     return (
       <form className='navbar-form' action=''>
@@ -58,6 +58,12 @@ class AddressShow extends Component {
                 bsStyle='primary'
                 id='showNextAddressClick' className='FooterButtons'
                 onClick={this.props.onAddressChange}>Get Next Address
+              </Button>
+
+              <Button
+                bsStyle='primary'
+                id='refreshDataClick' className='FooterButtons'
+                onClick={this.props.onRefreshData}>Refresh from DB
               </Button>
             </div>
           </div>

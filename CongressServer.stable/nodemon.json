@@ -1,4 +1,0 @@
-{
-  "verbose": true,
-  "ignore": ["politicians.json", "**/bower-components/**"]
-}

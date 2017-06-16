@@ -7,8 +7,8 @@ const getData = (url) => {
   switch (url) {
     case './address-list.json':
       return [{
-        "firstName": "mock-unknown",
-        "lastName": "mock-unknown",
+        "firstName": "mock-fromCA",
+        "lastName": "mock-fromCA",
         "street": "mock-unknown",
         "city": "mock-unknown",
         "state": "mock-unknown",

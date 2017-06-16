@@ -51,7 +51,7 @@ h2 {
   margin: 10px 5px;
   border: 1px solid white;
   border-radius: 5px;
-  width: 200px;
+  /*width: 200px;*/
   height: 25px;
   background: rgba(255, 255, 255, 0.5);
   padding-top: 5px;
@@ -65,7 +65,7 @@ h2 {
 
 .Content {
   display: inline-block;
-  Width: 500px;
+  Width: 400px;
   min-height: 240px;
   margin: 10px;
   border: 1px solid white;

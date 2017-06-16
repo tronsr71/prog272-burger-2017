@@ -19,6 +19,7 @@ function insertPolitician(politician, response) {
   const newPolitician = new Politicians({
     'firstName': politician.firstName,
     'lastName': politician.lastName,
+    'street': politician.street,
     'city': politician.city,
     'state': politician.state,
     'zip': politician.zip,
