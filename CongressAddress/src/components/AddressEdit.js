@@ -69,6 +69,12 @@ class AddressEdit extends Component {
                 id='showNextAddressClick' className='FooterButtons'
                 onClick={this.props.onAddressChange}>Get Next Address
               </Button>
+
+              <Button
+                bsStyle='primary'
+                id='refreshDataClick' className='FooterButtons'
+                onClick={this.props.onRefreshData}>Refresh from DB
+              </Button>
             </div>
           </div>
         </div>

@@ -7,13 +7,13 @@ class ElfMenu extends Component {
   render() {
     const navbarInstance = (
       <Navbar inverse collapseOnSelect>
-        <Navbar.Collapse>
+        {/*<Navbar.Collapse>*/}
           <Nav>
             <LinkContainer to='/'><NavItem>Address Show</NavItem></LinkContainer>
             <LinkContainer to='/edit'><NavItem>Address Edit</NavItem></LinkContainer>
             <LinkContainer to='/small'><NavItem>Small Numbers</NavItem></LinkContainer>
           </Nav>
-        </Navbar.Collapse>
+        {/*</Navbar.Collapse>*/}
       </Navbar>
     );
     return (

@@ -7,10 +7,10 @@ var connect = require('./connect');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   'use strict';
-  res.render('index', {title: 'CongressServer'});
+  //res.render('index', {title: 'CongressServer'});
 
   // use this after doing 'npm run build'
-  //res.loadFile('index.html);
+  res.loadFile('index.html');
 
 });
 
@@ -27,6 +27,11 @@ function checkConnection(response, callback) {
   }
   callback(true);
 }
+
+router.get('/admin', function(req, res) {
+  'use strict';
+  res.render('index', {title: 'CongressServer'});
+});
 
 router.get('/all-data', function(request, response) {
   'use strict';

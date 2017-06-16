@@ -178,6 +178,7 @@ class DataMaven extends Component {
                          address={this.state.address}
                          onAddressChange={this.onAddressChange}
                          onNameChange={this.onNameChange}
+                         onRefreshData={this.onRefreshData}
             />
           )}/>
           <Route path='/small' component={SmallNumbers}/>
